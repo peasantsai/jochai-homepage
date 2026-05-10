@@ -1,0 +1,105 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ink: #0e1117;
+  --color-ink-2: #1f232b;
+  --color-ink-3: #2f343d;
+  --color-mute: #6b7280;
+  --color-line: #e5e7eb;
+  --color-paper: #f8fafc;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+
+  --font-sans:
+    var(--font-inter), ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial;
+  --font-mono:
+    var(--font-mono), ui-monospace, 'JetBrains Mono', 'SFMono-Regular',
+    Menlo, monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+}
+
+/* Force dark variant to respond to .dark class on <html>. */
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: var(--color-paper);
+  --fg: var(--color-ink);
+  --fg-soft: #1f232b;
+  --surface: #ffffff;
+  --surface-2: var(--color-paper);
+  --border: var(--color-line);
+  --border-soft: #eef2f6;
+  --muted: var(--color-mute);
+  color-scheme: light;
+}
+
+.dark {
+  --bg: var(--color-ink);
+  --fg: var(--color-paper);
+  --fg-soft: #d6dbe3;
+  --surface: var(--color-ink-2);
+  --surface-2: #16191f;
+  --border: var(--color-ink-3);
+  --border-soft: #1a1e25;
+  --muted: #8b929d;
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  border-color: var(--border);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+/* Utility classes layered on top of theme tokens — Tailwind v4 pulls these
+   in via the theme block, but a few semantic shorthands keep markup terse. */
+@layer utilities {
+  .bg-surface { background-color: var(--surface); }
+  .bg-surface-2 { background-color: var(--surface-2); }
+  .text-fg { color: var(--fg); }
+  .text-fg-soft { color: var(--fg-soft); }
+  .text-muted { color: var(--muted); }
+  .border-border { border-color: var(--border); }
+  .border-border-soft { border-color: var(--border-soft); }
+
+  /* Schematic line grid — used as a section background accent. */
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, var(--border-soft) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border-soft) 1px, transparent 1px);
+    background-size: 56px 56px;
+    background-position: -1px -1px;
+  }
+
+  .hairline {
+    border-top: 1px solid var(--border);
+  }
+
+  .focus-ring {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  /* Avoid layout shift when a section enters viewport. */
+  .anchor-offset { scroll-margin-top: 80px; }
+}
+
+/* Smooth theme transitions but keep accent crisp. */
+html {
+  transition: background-color 200ms ease, color 200ms ease;
+}

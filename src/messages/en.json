@@ -1,0 +1,325 @@
+{
+  "meta": {
+    "title": "Joch — The control plane for AI agent fleets",
+    "description": "Joch is the vendor-neutral control plane for governing, securing, and operating AI agent fleets across every SDK, model, tool, and runtime."
+  },
+  "nav": {
+    "product": "Product",
+    "pillars": "Pillars",
+    "pricing": "Pricing",
+    "docs": "Docs",
+    "github": "GitHub",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "themeLight": "Switch to light theme",
+    "themeDark": "Switch to dark theme",
+    "language": "Language"
+  },
+  "hero": {
+    "eyebrow": "Open-source agent control plane",
+    "title": "Harness your agent fleet.",
+    "subtitle": "Joch is the vendor-neutral control plane for securing, governing, and operating AI agents across every model, framework, tool, and runtime.",
+    "ctaPrimary": "Read the docs",
+    "ctaSecondary": "Star on GitHub",
+    "terminalTitle": "joch — operator shell",
+    "terminalLines": [
+      { "prompt": "$ joch get agents", "out": "12 agents · 4 frameworks · 3 providers" },
+      { "prompt": "$ joch trace exec-7d3f", "out": "143 events · 11 tool calls · 1 approval pending" },
+      { "prompt": "$ joch approve call-456", "out": "approved by you · email.send → resend" },
+      { "prompt": "$ joch abom support-agent", "out": "AgBOM · CycloneDX · 1 model · 9 tools · 2 MCP" }
+    ]
+  },
+  "problem": {
+    "kicker": "The questions vendor SDKs leave to the operator",
+    "items": [
+      "What agents exist across my company, and who owns them?",
+      "What models, tools, MCP servers, and memory does each agent depend on?",
+      "What did each agent do yesterday — and what did it cost?",
+      "Can I move an agent from OpenAI to Claude — and what would break?",
+      "Can I block all agents from calling email.send without approval?",
+      "Can I deploy the same agent locally, in Docker, and in Kubernetes?",
+      "Can I compare two agent versions before promoting to production?",
+      "Which MCP servers are pinned, and which were quarantined this week?"
+    ],
+    "footnote": "If you operate ten, a hundred, or a thousand agents — you need a control plane."
+  },
+  "pillars": {
+    "kicker": "Five pillars",
+    "title": "Run agents like production infrastructure.",
+    "subtitle": "Joch organizes everything you need to operate AI agents safely — from the inventory layer down to release management.",
+    "items": [
+      {
+        "key": "inventory",
+        "name": "Inventory",
+        "summary": "A single system of record for every agent, model, tool, MCP server, memory store, and owner — regardless of which SDK built them.",
+        "href": "https://peasantsai.github.io/joch-docs/pillars/inventory/"
+      },
+      {
+        "key": "governance",
+        "name": "Governance",
+        "summary": "Portable policy-as-code for tool use, data access, approvals, model choice, and budgets — enforced uniformly across SDKs.",
+        "href": "https://peasantsai.github.io/joch-docs/pillars/governance/"
+      },
+      {
+        "key": "portability",
+        "name": "Portability",
+        "summary": "One agent record runs locally, in Docker, on Kubernetes, or via managed runtimes; conversation state migrates across providers.",
+        "href": "https://peasantsai.github.io/joch-docs/pillars/portability/"
+      },
+      {
+        "key": "observability",
+        "name": "Observability",
+        "summary": "Every model call, tool call, memory write, RAG retrieval, and approval is captured as an event — exported to OpenTelemetry and OCSF.",
+        "href": "https://peasantsai.github.io/joch-docs/pillars/observability/"
+      },
+      {
+        "key": "release",
+        "name": "Release Management",
+        "summary": "Version, eval, diff, promote, and roll back agents like production software — with quality gates that block regressions.",
+        "href": "https://peasantsai.github.io/joch-docs/pillars/release-management/"
+      }
+    ]
+  },
+  "products": {
+    "kicker": "Product surfaces",
+    "title": "One control plane. Six surfaces.",
+    "subtitle": "Inspect, govern, distribute, and operate your fleet from open-source tools, hosted SaaS, or self-hosted enterprise.",
+    "items": [
+      {
+        "key": "console",
+        "name": "Joch Console",
+        "summary": "Open-source web console for inventory, traces, approvals, AgBOM, and cost views.",
+        "tag": "Open Source",
+        "image": "/brand/joch_console.png"
+      },
+      {
+        "key": "registry",
+        "name": "Joch Registry",
+        "summary": "Open registry of reusable agent templates, policies, and tool / MCP definitions.",
+        "tag": "Open Source",
+        "image": "/brand/joch_registry.png"
+      },
+      {
+        "key": "operator",
+        "name": "Joch Operator",
+        "summary": "Kubernetes operator that reconciles agents, policies, and traces as first-class resources.",
+        "tag": "Open Source",
+        "image": "/brand/joch_operator.png"
+      },
+      {
+        "key": "cloud",
+        "name": "Joch Cloud",
+        "summary": "Hosted multi-tenant control plane with SSO, RBAC, retention, and SLA — your runtime, our control plane.",
+        "tag": "Commercial",
+        "image": "/brand/joch_cloud.png"
+      },
+      {
+        "key": "enterprise",
+        "name": "Joch Enterprise",
+        "summary": "Self-hosted enterprise distribution with airgap installer, hardened images, and FedRAMP-ready packaging.",
+        "tag": "Commercial",
+        "image": "/brand/joch_enterprise.png"
+      },
+      {
+        "key": "marketplace",
+        "name": "Joch Marketplace",
+        "summary": "Vetted MCP servers and tools with signing, security review, and SLAs.",
+        "tag": "Commercial",
+        "image": "/brand/joch_marketplace.png"
+      }
+    ]
+  },
+  "integrations": {
+    "kicker": "Bring any agent. Run it anywhere.",
+    "title": "Vendor-neutral by design.",
+    "subtitle": "Joch sits above your SDKs and providers. Switch frameworks or models without rewriting governance.",
+    "sdksLabel": "SDKs & frameworks",
+    "providersLabel": "Model providers",
+    "runtimesLabel": "Runtimes",
+    "sdks": [
+      "OpenAI Agents SDK",
+      "Claude Agent SDK",
+      "Google ADK",
+      "Microsoft Agent Framework",
+      "LangGraph",
+      "CrewAI",
+      "Custom Python / TS"
+    ],
+    "providers": [
+      "OpenAI",
+      "Anthropic",
+      "Google",
+      "Microsoft Foundry",
+      "Ollama",
+      "vLLM",
+      "llama.cpp"
+    ],
+    "runtimes": ["Local", "Docker", "Kubernetes", "Managed runtimes"]
+  },
+  "useCases": {
+    "kicker": "Use cases",
+    "title": "What operators do with Joch.",
+    "items": [
+      {
+        "key": "fleet",
+        "name": "Fleet Inventory",
+        "summary": "Discover, register, and catalog every agent across SDKs and teams in one place."
+      },
+      {
+        "key": "mcp",
+        "name": "MCP Governance",
+        "summary": "Pin, scan, sandbox, and quarantine MCP servers across the entire fleet."
+      },
+      {
+        "key": "migration",
+        "name": "Cross-Provider Migration",
+        "summary": "Move a live conversation between providers with a deterministic checkpoint and capability check."
+      },
+      {
+        "key": "cost",
+        "name": "Cost Control",
+        "summary": "Cap, attribute, and alert on agent costs across teams and providers — without changing agent code."
+      },
+      {
+        "key": "release",
+        "name": "Release Gates",
+        "summary": "Block agent promotions on failing evals, AgBOM regressions, or missing approvals."
+      },
+      {
+        "key": "approvals",
+        "name": "Approvals",
+        "summary": "Route human approvals for risky tool calls without blocking the agent loop."
+      }
+    ]
+  },
+  "pricing": {
+    "kicker": "Pricing",
+    "title": "Open-core. Honest pricing.",
+    "subtitle": "Pay for control-plane operations, never for inference. The OSS core is sufficient for production fleets.",
+    "billed": "billed monthly",
+    "cta": "Get started",
+    "ctaContact": "Contact sales",
+    "tiers": [
+      {
+        "key": "oss",
+        "name": "Open Source",
+        "price": "Free",
+        "priceNote": "Apache-2.0",
+        "summary": "Full control plane, gateways, AOS exporters, CLI, console — self-hostable end to end.",
+        "features": [
+          "Full control plane + Console + Operator",
+          "Tool & MCP gateway",
+          "AOS-conformant AgBOM and traces",
+          "Framework & provider adapters",
+          "Community support",
+          "Helm chart, container images, Homebrew"
+        ],
+        "ctaKey": "cta",
+        "ctaHref": "https://github.com/peasantsai",
+        "highlight": false
+      },
+      {
+        "key": "starter",
+        "name": "Cloud Starter",
+        "price": "Free",
+        "priceNote": "for small teams",
+        "summary": "Hosted control plane to remove the hosting friction. Limits on agents, executions, and retention.",
+        "features": [
+          "Hosted multi-tenant control plane",
+          "Hosted Console",
+          "Managed AgBOM & trace storage",
+          "Customer-runtime tunnel",
+          "Community-vetted MCP catalog",
+          "Best-effort response"
+        ],
+        "ctaKey": "cta",
+        "ctaHref": "https://github.com/peasantsai",
+        "highlight": false
+      },
+      {
+        "key": "team",
+        "name": "Cloud Team",
+        "price": "Per agent",
+        "priceNote": "+ execution overage",
+        "summary": "The typical landing tier for engineering organizations.",
+        "features": [
+          "Everything in Starter",
+          "SSO / SCIM, RBAC",
+          "Premium connectors",
+          "Multi-region trace & AgBOM (90d)",
+          "Slack / email approval routing",
+          "Audit export to SIEM",
+          "Business-hours support · 99.9% SLA"
+        ],
+        "ctaKey": "cta",
+        "ctaHref": "https://github.com/peasantsai",
+        "highlight": true
+      },
+      {
+        "key": "enterprise",
+        "name": "Cloud Enterprise",
+        "price": "Custom",
+        "priceNote": "capacity-based",
+        "summary": "For regulated industries and large fleets where dedicated hosting matters.",
+        "features": [
+          "Everything in Team",
+          "Advanced policy packs",
+          "Signed MCP / tool marketplace",
+          "Dedicated control plane in your cloud",
+          "FedRAMP / SOC 2 / ISO 27001",
+          "Advanced eval packs · custom integrations",
+          "24×7 with named TAM · 99.95% SLA"
+        ],
+        "ctaKey": "ctaContact",
+        "ctaHref": "mailto:hello@peasants.ai",
+        "highlight": false
+      }
+    ],
+    "footnoteTitle": "Need self-hosted Enterprise?",
+    "footnoteBody": "Joch Enterprise ships every Cloud feature in an airgap-friendly distribution with hardened images, FedRAMP packaging, and a dedicated CVE channel.",
+    "footnoteCta": "Talk to us",
+    "footnoteHref": "mailto:hello@peasants.ai"
+  },
+  "cta": {
+    "kicker": "No unmanaged agents.",
+    "title": "Govern every agent. Audit every action.",
+    "subtitle": "Install Joch in front of your fleet. Discover, govern, trace, approve, deploy, roll back.",
+    "primary": "Read the docs",
+    "secondary": "Star on GitHub"
+  },
+  "footer": {
+    "tagline": "The yoke for autonomous systems.",
+    "columns": {
+      "product": {
+        "label": "Product",
+        "links": [
+          { "label": "Joch Console", "href": "#products" },
+          { "label": "Joch Registry", "href": "#products" },
+          { "label": "Joch Cloud", "href": "#products" },
+          { "label": "Joch Enterprise", "href": "#products" },
+          { "label": "Pricing", "href": "#pricing" }
+        ]
+      },
+      "resources": {
+        "label": "Resources",
+        "links": [
+          { "label": "Documentation", "href": "https://peasantsai.github.io/joch-docs/" },
+          { "label": "Architecture", "href": "https://peasantsai.github.io/joch-docs/architecture/" },
+          { "label": "Resource catalog", "href": "https://peasantsai.github.io/joch-docs/specs/" },
+          { "label": "AOS conformance", "href": "https://peasantsai.github.io/joch-docs/aos/" }
+        ]
+      },
+      "community": {
+        "label": "Community",
+        "links": [
+          { "label": "GitHub", "href": "https://github.com/peasantsai" },
+          { "label": "Contributing", "href": "https://peasantsai.github.io/joch-docs/community/contributing/" },
+          { "label": "Governance", "href": "https://peasantsai.github.io/joch-docs/community/governance/" },
+          { "label": "FAQ", "href": "https://peasantsai.github.io/joch-docs/community/faq/" }
+        ]
+      }
+    },
+    "license": "Apache-2.0 · open source by PeasantsAI",
+    "copyright": "© {year} PeasantsAI. All rights reserved."
+  }
+}
