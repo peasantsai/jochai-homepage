@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import { BrandMark } from '@/components/ui/brand-mark';
 
 type Column = { label: string; links: { label: string; href: string }[] };
@@ -15,18 +16,33 @@ export function Footer() {
         {col.label}
       </p>
       <ul className="mt-4 space-y-2">
-        {col.links.map((l) => (
-          <li key={l.label}>
-            <a
-              href={l.href}
-              target={l.href.startsWith('http') ? '_blank' : undefined}
-              rel="noreferrer"
-              className="text-sm text-fg-soft transition hover:text-accent"
-            >
-              {l.label}
-            </a>
-          </li>
-        ))}
+        {col.links.map((l) => {
+          const isExternal = l.href.startsWith('http');
+          if (isExternal) {
+            return (
+              <li key={l.label}>
+                <a
+                  href={l.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sm text-fg-soft transition hover:text-accent"
+                >
+                  {l.label}
+                </a>
+              </li>
+            );
+          }
+          return (
+            <li key={l.label}>
+              <Link
+                href={l.href}
+                className="text-sm text-fg-soft transition hover:text-accent"
+              >
+                {l.label}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

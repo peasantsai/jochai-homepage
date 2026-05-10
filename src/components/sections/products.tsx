@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { ArrowUpRight } from 'lucide-react';
+import { Link } from '@/i18n/navigation';
 import { SectionHeader } from '@/components/ui/section-header';
 
 type Product = {
@@ -27,8 +29,9 @@ export function Products() {
         />
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((p) => (
-            <article
+            <Link
               key={p.key}
+              href={`/products/${p.key}`}
               className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-surface transition hover:border-accent"
             >
               <div className="relative aspect-[16/10] overflow-hidden border-b border-border-soft bg-[color:var(--bg)]">
@@ -57,8 +60,11 @@ export function Products() {
                   </span>
                 </div>
                 <p className="text-sm leading-relaxed text-muted">{p.summary}</p>
+                <span className="mt-2 inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-wider text-fg-soft transition group-hover:text-accent">
+                  Explore <ArrowUpRight className="h-3 w-3" />
+                </span>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </div>

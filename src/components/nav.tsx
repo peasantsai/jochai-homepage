@@ -10,9 +10,9 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { LocaleToggle } from '@/components/locale-toggle';
 
 const SECTIONS = [
-  { id: '#products', key: 'product' as const },
-  { id: '#pillars', key: 'pillars' as const },
-  { id: '#pricing', key: 'pricing' as const },
+  { id: '/#products', key: 'product' as const, internal: true },
+  { id: '/#pillars', key: 'pillars' as const, internal: true },
+  { id: '/pricing', key: 'pricing' as const, internal: true },
 ];
 
 export function Nav() {
@@ -43,13 +43,13 @@ export function Nav() {
 
         <nav className="hidden items-center gap-7 md:flex">
           {SECTIONS.map((s) => (
-            <a
+            <Link
               key={s.key}
               href={s.id}
               className="text-sm text-fg-soft transition hover:text-accent"
             >
               {t(s.key)}
-            </a>
+            </Link>
           ))}
           <a
             href="https://peasantsai.github.io/joch-docs/"
@@ -88,14 +88,14 @@ export function Nav() {
         <div className="border-t border-border bg-surface md:hidden">
           <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-4 sm:px-8">
             {SECTIONS.map((s) => (
-              <a
+              <Link
                 key={s.key}
                 href={s.id}
                 onClick={() => setOpen(false)}
                 className="py-1 text-sm text-fg-soft hover:text-accent"
               >
                 {t(s.key)}
-              </a>
+              </Link>
             ))}
             <a
               href="https://peasantsai.github.io/joch-docs/"

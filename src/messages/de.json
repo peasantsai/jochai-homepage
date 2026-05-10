@@ -293,11 +293,13 @@
       "product": {
         "label": "Produkt",
         "links": [
-          { "label": "Joch Console", "href": "#products" },
-          { "label": "Joch Registry", "href": "#products" },
-          { "label": "Joch Cloud", "href": "#products" },
-          { "label": "Joch Enterprise", "href": "#products" },
-          { "label": "Preise", "href": "#pricing" }
+          { "label": "Joch Console", "href": "/products/console" },
+          { "label": "Joch Registry", "href": "/products/registry" },
+          { "label": "Joch Operator", "href": "/products/operator" },
+          { "label": "Joch Cloud", "href": "/products/cloud" },
+          { "label": "Joch Enterprise", "href": "/products/enterprise" },
+          { "label": "Joch Marketplace", "href": "/products/marketplace" },
+          { "label": "Preise", "href": "/pricing" }
         ]
       },
       "resources": {
@@ -321,5 +323,214 @@
     },
     "license": "Apache-2.0 · Open Source von PeasantsAI",
     "copyright": "© {year} PeasantsAI. Alle Rechte vorbehalten."
+  },
+  "productPages": {
+    "shared": {
+      "back": "Alle Produkte",
+      "tagline": "Slogan",
+      "featuresLabel": "Funktionen",
+      "includesLabel": "Im Lieferumfang",
+      "cliLabel": "Operator-Sicht",
+      "ctaPrimary": "Zur Dokumentation",
+      "ctaSecondary": "Auf GitHub starren",
+      "finalCtaTitle": "Bringen Sie diese Oberfläche heute live.",
+      "finalCtaSubtitle": "Installieren Sie den Open-Source-Kern oder starten Sie auf Cloud — gleiche Steuerungsebene, gleiche Audit-Spur.",
+      "metaSuffix": "Joch — die Steuerungsebene für KI-Agentenflotten"
+    },
+    "items": {
+      "console": {
+        "name": "Joch Console",
+        "tag": "Open Source",
+        "tagline": "Jeden Agenten sehen. Jede Aktion freigeben.",
+        "summary": "Joch Console ist die Open-Source-Web-Oberfläche auf der Joch-Steuerungsebene. Die Glasscheibe, vor der Ihre Operator sitzen, wenn sie wissen müssen, was ein Agent getan, gekostet und angefasst hat.",
+        "image": "/brand/joch_console.png",
+        "features": [
+          { "name": "Inventar-Ansicht", "summary": "Jeder Agent über jedes SDK in einer durchsuchbaren Liste. Filtern nach Verantwortlichem, Framework, Modell, MCP-Server oder Laufzeit." },
+          { "name": "Trace-Explorer", "summary": "Jede Ausführung Ende-zu-Ende abspielen: jeder Modell- und Tool-Aufruf, jede RAG-Abfrage, jeder Speichervorgang, jede Freigabe — mit Kostenzuordnung pro Span." },
+          { "name": "Freigabe-Warteschlange", "summary": "Anstehende Tool-Aufrufe und Policy-Overrides landen hier; freigeben, ablehnen oder anpassen mit Begründung und Audit." },
+          { "name": "AgBOM-Viewer", "summary": "Die CycloneDX-erweiterte AgBOM jedes Agenten inspizieren — Modelle, Tools, MCP-Server, Wissensquellen samt Versionen." }
+        ],
+        "includes": [
+          "Inventar-, Trace-, Freigabe-, AgBOM- und Kostenanzeigen",
+          "Live-SSE-Aktualisierungen bei Statusänderungen",
+          "RBAC mit Org-/Team-/Agent-Bereichen",
+          "Policy-Editor mit Diff-Ansicht",
+          "Export nach OpenTelemetry, OCSF, CycloneDX, SPDX",
+          "Dunkles Standard-Theme und vollständige Tastenkürzel"
+        ],
+        "cli": [
+          { "prompt": "$ joch console serve --port 8080", "out": "Joch Console lauscht auf http://localhost:8080" },
+          { "prompt": "$ open http://localhost:8080/agents", "out": "12 Agenten · 4 Frameworks · 3 Anbieter" },
+          { "prompt": "$ joch console approvals --pending", "out": "1 offen · email.send → resend · Agent: support-bot" }
+        ]
+      },
+      "registry": {
+        "name": "Joch Registry",
+        "tag": "Open Source",
+        "tagline": "Eine Registry, aus der Ihre Agenten ziehen.",
+        "summary": "Joch Registry ist die offene Registry für wiederverwendbare Agenten-Vorlagen, Policy-Bündel, Tool-Definitionen und MCP-Server-Beschreibungen. Versioniert, signiert, von jeder Joch-Installation aus abrufbar.",
+        "image": "/brand/joch_registry.png",
+        "features": [
+          { "name": "Vorlagen-Katalog", "summary": "Wiederverwendbare Agenten-Definitionen mit Eingabe-/Ausgabeschemata, Standard-Policies und empfohlenen Modellen veröffentlichen." },
+          { "name": "Policy-Bibliothek", "summary": "Policy-Bündel (Allowlists, Redaction, Budgetgrenzen) als versionierte Artefakte verteilen, die Ihre Flotte einzieht." },
+          { "name": "MCP- & Tool-Deskriptoren", "summary": "Angepinnte, signierte MCP-Server-Einträge mit Capability-Deklarationen und Sicherheitsprüfstatus." },
+          { "name": "Versionierung & Signaturen", "summary": "Semver, content-adressierte Digests, optional Cosign-Signaturen — Ihre Agenten ziehen nur Geprüftes." }
+        ],
+        "includes": [
+          "Öffentliche und private Repositories",
+          "Mirror-Modus für Airgap-Betrieb",
+          "Pull/Push CLI und HTTP-API",
+          "Webhooks bei Veröffentlichung",
+          "Cross-Registry-Replikation",
+          "Suche nach Capability, Tag oder Verantwortlichem"
+        ],
+        "cli": [
+          { "prompt": "$ joch registry login registry.joch.ai", "out": "Authentifiziert als team-acme" },
+          { "prompt": "$ joch registry push template/customer-research:v0.4.1", "out": "Hochgeladen · Digest sha256:9c2a… · signiert" },
+          { "prompt": "$ joch registry pull policy/pii-redaction:latest", "out": "Aufgelöst zu policy/pii-redaction:v1.7.0 · 12 Regeln" }
+        ]
+      },
+      "operator": {
+        "name": "Joch Operator",
+        "tag": "Open Source",
+        "tagline": "Agenten als Kubernetes-Ressourcen.",
+        "summary": "Joch Operator macht das Joch-Ressourcenmodell zu Kubernetes-CRDs. Agenten, Modelle, Modell-Routen, MCP-Server, Policies und Traces neben dem Rest Ihrer Plattform abgleichen — über kubectl, Argo CD oder Flux.",
+        "image": "/brand/joch_operator.png",
+        "features": [
+          { "name": "First-Class CRDs", "summary": "Agent, Model, ModelRoute, Tool, MCPServer, Policy, Approval, Trace, AgBOM und der Rest des Katalogs als native Kubernetes-Objekte." },
+          { "name": "Reconciliation-Loops", "summary": "Kontinuierliche Controller halten den Soll-Zustand synchron — neustartfest, GitOps-tauglich, idempotent." },
+          { "name": "Admission-Webhooks", "summary": "Schlechte Policy, Drift oder unvertrauenswürdige MCP-Server beim Apply blockieren, bevor sie das Cluster erreichen." },
+          { "name": "Helm + Kustomize", "summary": "Bereitstellung per Helm-Chart oder Kustomize-Overlay; Versionen und Namespaces pro Team anpinnen." }
+        ],
+        "includes": [
+          "Alle Joch-CRDs und -Controller",
+          "Helm-Chart mit sinnvollen Defaults",
+          "Validating- und Mutating-Webhooks",
+          "Status-Bedingungen via kubectl sichtbar",
+          "Multi-Namespace und Multi-Tenant",
+          "Kompatibel mit Argo CD, Flux, Backstage"
+        ],
+        "cli": [
+          { "prompt": "$ helm install joch-operator joch/operator --namespace joch", "out": "Released joch-operator-v1.4.0 · 7 Controller laufen" },
+          { "prompt": "$ kubectl get agents -A", "out": "12 Agenten · alle Reconciled · letzter Sync vor 4s" },
+          { "prompt": "$ kubectl describe agent support-bot", "out": "Conditions: Ready, Synced · Trace 143 Events · Letzte AgBOM v0.7" }
+        ]
+      },
+      "cloud": {
+        "name": "Joch Cloud",
+        "tag": "Kommerziell",
+        "tagline": "Ihre Laufzeit. Unsere Steuerungsebene.",
+        "summary": "Joch Cloud ist die gehostete Mehrmandanten-Steuerungsebene. Die Steuerungsebene läuft bei uns; Ihre Agenten und Laufzeiten bleiben, wo sie sind. Verbunden über einen Customer-Runtime-Tunnel — kein eingehender Port nötig.",
+        "image": "/brand/joch_cloud.png",
+        "features": [
+          { "name": "Gehostete Steuerungsebene", "summary": "Multi-Region, mehrmandantenfähig. SSO, SCIM, RBAC. Audit-Export an Ihr SIEM. Mit SLA." },
+          { "name": "Customer-Runtime-Tunnel", "summary": "Outbound-only WebSocket-Tunnel aus Ihrer Umgebung — keine Inbound-Ports, keine Firewall-Änderungen." },
+          { "name": "Verwaltete Aufbewahrung", "summary": "Trace- und AgBOM-Aufbewahrung bis 90 Tage auf Team, individuell auf Enterprise. Jederzeit exportierbar." },
+          { "name": "Freigabe-Routing", "summary": "Slack- und E-Mail-Freigaben mit Reply-to-Approve, Mention-to-Deny, vollem Audit." }
+        ],
+        "includes": [
+          "Alles aus dem Open-Source-Kern",
+          "Gehostete Console mit eigener Domain",
+          "SSO / SCIM / Erweitertes RBAC",
+          "Multi-Region Trace- + AgBOM-Speicher",
+          "Customer-Runtime-Tunnel (kostenlos)",
+          "Audit-Export an SIEM (S3, Splunk, Datadog, Elastic)",
+          "Premium-Konnektoren (Jira, ServiceNow, PagerDuty)",
+          "Geschäftszeit-Support · 99,9 % SLA"
+        ],
+        "cli": [
+          { "prompt": "$ joch login --cloud team-acme", "out": "Eingeloggt als you@team-acme.com · Org acme · Region eu-west-1" },
+          { "prompt": "$ joch tunnel up --runtime prod-cluster", "out": "Tunnel oben · 14ms RTT · Agenten ab jetzt aus der Console erreichbar" },
+          { "prompt": "$ joch trace export --since 24h --sink datadog", "out": "18.432 Events nach Datadog exportiert" }
+        ]
+      },
+      "enterprise": {
+        "name": "Joch Enterprise",
+        "tag": "Kommerziell",
+        "tagline": "Selbst gehostet, gehärtet, airgap-tauglich.",
+        "summary": "Joch Enterprise ist die selbst-gehostete Distribution für Organisationen, die nicht auf SaaS laufen können — regulierte Branchen, Airgap-Umgebungen, FedRAMP-Kunden. Gleiche Oberflächen wie Joch Cloud, paketiert für Ihre Laufzeit.",
+        "image": "/brand/joch_enterprise.png",
+        "features": [
+          { "name": "Airgap-Installer", "summary": "Single-Bundle-Installer mit allen Images und Helm-Charts vorpaketiert. Funktioniert hinter Proxy ohne ausgehendes Netzwerk." },
+          { "name": "Gehärtete Images", "summary": "Distroless-Basis, mit Cosign signiert, SBOM veröffentlicht, an CIS-Benchmarks ausgerichtet." },
+          { "name": "FedRAMP-Paket", "summary": "FIPS-validierte Kryptographie, SSP-Dokumentation, Control-Mapping, dedizierter CVE-Kanal." },
+          { "name": "Erweiterte Policy-Pakete", "summary": "PII-Redaction, GDPR, HIPAA, ITAR, FedRAMP-Control-Maps als Policy-Bündel ausgeliefert." }
+        ],
+        "includes": [
+          "Jede Cloud-Funktion, selbst gehostet",
+          "Airgap-Installer + Offline-Registry",
+          "FIPS / FedRAMP / SOC 2 / ISO 27001 Paket",
+          "Gehärtete, signierte Images mit SBOMs",
+          "Dedizierter CVE-Patch-Kanal",
+          "Erweiterte Policy-Pakete (regulierte Branchen)",
+          "24×7-Support mit benanntem TAM",
+          "99,95 % SLA in Ihrer Laufzeit"
+        ],
+        "cli": [
+          { "prompt": "$ joch enterprise install --bundle joch-enterprise-1.4.0.tar.zst", "out": "Signatur geprüft · 24 Images werden geladen · Charts bereit" },
+          { "prompt": "$ joch enterprise upgrade --to 1.5.0 --dry-run", "out": "Plan: 0 brechend · 3 Image-Upgrades · 2 Schema-Migrationen" },
+          { "prompt": "$ joch enterprise compliance export --pack fedramp", "out": "412 Control-Evidence-Dateien nach ./compliance/fedramp/ geschrieben" }
+        ]
+      },
+      "marketplace": {
+        "name": "Joch Marketplace",
+        "tag": "Kommerziell",
+        "tagline": "MCP-Server und Tools — geprüft.",
+        "summary": "Joch Marketplace ist der kuratierte Katalog von MCP-Servern und Tools, aus dem Ihre Agenten ziehen können. Jeder Eintrag hat eine Sicherheitsprüfung, signierte Artefakte, eine SLA und eine klare Capability-Deklaration.",
+        "image": "/brand/joch_marketplace.png",
+        "features": [
+          { "name": "Sicherheitsprüfung", "summary": "Jeder Server vor Listung geprüft auf Capability-Umfang, Netzwerkexposition, Lieferkette und bekannte CVEs." },
+          { "name": "Signierte Artefakte", "summary": "Cosign-Signaturen und content-adressierte Digests; Ihr Registry-Mirror zieht nur geprüfte Bytes." },
+          { "name": "Capability-Deklarationen", "summary": "Jeder Eintrag deklariert, welche Tools er bereitstellt, welche Scopes er braucht und welche Seiteneffekte er auslösen kann." },
+          { "name": "SLA-gestützte Listings", "summary": "Marketplace-Partner verpflichten sich auf Verfügbarkeit und Reaktionszeiten — Eskalationspfade sind Teil des Vertrags." }
+        ],
+        "includes": [
+          "Kuratierter MCP-Server-Katalog",
+          "Kuratierter Tool-Katalog",
+          "Cosign-signierte Pakete",
+          "Capability- und Scope-Deklarationen",
+          "Sicherheitsprüf-Attestierungen",
+          "Quarantäne- und Recall-Kanal",
+          "Mirror-Modus für Airgap-Pulls",
+          "Hersteller-SLAs und Eskalation"
+        ],
+        "cli": [
+          { "prompt": "$ joch marketplace search --tool email", "out": "5 Treffer · resend (geprüft) · sendgrid (geprüft) · postmark (geprüft) · 2 Community" },
+          { "prompt": "$ joch marketplace install resend@v2.4.0 --pin", "out": "Installiert · Digest sha256:1f8b… · signiert von resend.com" },
+          { "prompt": "$ joch marketplace audit --since 30d", "out": "0 in Quarantäne · 1 zurückgerufen (sendgrid v2.3.1, CVE-2026-1820) · 4 kleine Updates" }
+        ]
+      }
+    }
+  },
+  "pricingPage": {
+    "hero": {
+      "kicker": "Preise",
+      "title": "Open-Core. Ehrliche Preise.",
+      "subtitle": "Der Apache-2.0-Kern reicht für produktive Flotten. Bezahlt wird die Steuerungsebene, niemals die Inferenz."
+    },
+    "principles": {
+      "kicker": "Wie wir abrechnen",
+      "items": [
+        { "name": "Steuerung statt Inferenz", "summary": "Inferenz-Abrechnung bleibt beim Anbieter. Joch ist ein Hebel auf Betriebs-Effizienz." },
+        { "name": "Agenten und Ausführungen", "summary": "Pro-Sitz unterschätzt Plattformen mit vielen Automatisierungen und wenigen Menschen. Wir messen die Arbeit." },
+        { "name": "Keine Paywalls im OSS", "summary": "Basis-AgBOM, Traces, Hooks, Gateways und Policies bleiben für immer kostenlos im Open-Source-Kern." },
+        { "name": "Aufbewahrung wird gemessen", "summary": "Trace- und AgBOM-Speicher kosten echtes Geld — das berechnen wir transparent, nicht über Feature-Schranken." }
+      ]
+    },
+    "addOnsLabel": "Add-ons",
+    "addOns": [
+      { "name": "Premium MCP-/Tool-Marketplace", "summary": "Geprüfte MCP-Server und Tools mit Signatur und Sicherheitsprüfung.", "price": "pro Server / Monat" },
+      { "name": "Compliance-Paket", "summary": "SOC 2, HIPAA, FedRAMP-Exporte und Control-Mapping.", "price": "jährlich" },
+      { "name": "Custom Guardian Agent", "summary": "Maßgeschneiderte Guardian-Agent-Integration für Ihr Tool-Gateway.", "price": "Engagement" },
+      { "name": "Privater Registry-Mirror", "summary": "Joch Registry-Mirror mit privaten Repositories und Replikation.", "price": "jährlich" }
+    ],
+    "faqLabel": "Preise — FAQ",
+    "faq": [
+      { "q": "Reicht der Open-Source-Tier wirklich für die Produktion?", "a": "Ja — Steuerungsebene, Gateways, AOS-Exporter, CLI, Console, Framework-Adapter, Anbieter-Adapter und der Kubernetes-Operator sind alle in der Apache-2.0-Distribution. Selbst-gehostete produktive Flotten laufen ohne kommerzielle Lizenz." },
+      { "q": "Was zählt als 'Agent' für die Abrechnung?", "a": "Ein Agent ist ein Eintrag im Joch-Inventar — eine benannte, verantwortete, versionierte Definition. Verschiedene Versionen desselben Agenten zählen als einer." },
+      { "q": "Berechnen Sie pro Ausführung?", "a": "Cloud Team enthält ein großzügiges monatliches Ausführungsbudget pro Agent und misst Überschreitungen in Stufen. OSS und Cloud Starter messen Ausführungen gar nicht." },
+      { "q": "Kann ich von Cloud auf Self-hosted wechseln (oder zurück)?", "a": "Ja. Joch ist portabel by design — Agenten-Datensätze, Policies und Traces lassen sich exportieren und sauber re-importieren. Cloud und Enterprise sprechen dieselbe Steuerungsebene." },
+      { "q": "Berechnen Sie für Inferenz?", "a": "Niemals. Anbieter-Tokens werden vom Anbieter abgerechnet. Joch routet den Aufruf und schreibt die Trace; die Bytes fließen direkt." }
+    ]
   }
 }
