@@ -1,34 +1,33 @@
 import type { SVGProps } from 'react';
 
 /**
- * Joch yoke logomark — vector recreation closely matching the brand sample
- * sheet: a horizontal crossbar with two outward-flaring collars and a
- * center post. Theme-aware via currentColor.
+ * The Joch yoke logomark. A single connected silhouette traced from the
+ * official brand asset `joch_logo_no_text_white_bg.png`:
+ *   - horizontal crossbar at top with chamfered outer ends
+ *   - two rectangular legs hanging from the crossbar
+ *   - a small center peg between the legs
+ *
+ * Theme-aware via currentColor; only ratio is fixed.
  */
-export function BrandMark({ size = 28, ...rest }: { size?: number } & SVGProps<SVGSVGElement>) {
+
+export const YOKE_VIEWBOX = '0 0 200 130';
+export const YOKE_PATH =
+  'M10 25 L190 25 L175 65 L175 110 L140 110 L140 65 L118 65 L118 110 L82 110 L82 65 L60 65 L60 110 L25 110 L25 65 Z';
+
+export function BrandMark({
+  size = 28,
+  ...rest
+}: { size?: number } & SVGProps<SVGSVGElement>) {
   return (
     <svg
-      viewBox="0 0 80 50"
+      viewBox={YOKE_VIEWBOX}
       width={size}
-      height={(size * 50) / 80}
+      height={(size * 130) / 200}
       fill="currentColor"
       aria-hidden="true"
       {...rest}
     >
-      {/* Crossbar */}
-      <rect x="4" y="18" width="72" height="9" rx="1.5" />
-      {/* Left flare */}
-      <path d="M4 27 L4 38 Q4 40 6 40 L18 40 Q20 40 20 38 L20 28 Z" />
-      {/* Left collar */}
-      <rect x="9" y="38" width="11" height="8" rx="1" />
-      {/* Right flare */}
-      <path d="M76 27 L76 38 Q76 40 74 40 L62 40 Q60 40 60 38 L60 28 Z" />
-      {/* Right collar */}
-      <rect x="60" y="38" width="11" height="8" rx="1" />
-      {/* Center post (hitch) */}
-      <rect x="36" y="6" width="8" height="14" rx="1.5" />
-      {/* Top cap on hitch */}
-      <rect x="33" y="3" width="14" height="5" rx="1" />
+      <path d={YOKE_PATH} />
     </svg>
   );
 }

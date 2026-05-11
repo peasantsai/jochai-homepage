@@ -1,9 +1,13 @@
 import type { SVGProps } from 'react';
+import { YOKE_PATH } from './brand-mark';
 
 /**
- * Hand-authored SVG product icons. Per-product accent colors match the brand
- * sample sheet; outline / strokes use currentColor so the surrounding card
- * theme can tint them.
+ * Hand-authored SVG product icons. Each icon is a container shape (monitor,
+ * cube, hexagon, cloud, shield, cart) with the real Joch yoke silhouette
+ * embedded inside. Per-product accent colors match the brand sample sheet.
+ *
+ * The yoke path uses the same `YOKE_PATH` constant traced from
+ * `assets/joch_logo_no_text_white_bg.png`, scaled and translated per icon.
  */
 
 const COMMON: SVGProps<SVGSVGElement> = {
@@ -14,36 +18,29 @@ const COMMON: SVGProps<SVGSVGElement> = {
   strokeLinejoin: 'round',
 };
 
-/* The yoke "head" mark — used inside every product icon to anchor the brand. */
-function YokeHead({
-  cx = 120,
-  cy = 132,
-  scale = 1,
+/**
+ * Renders the yoke silhouette centered at (cx, cy), scaled to `width` pixels
+ * wide. The path natural size is 200 × 130 (aspect 1.538). We translate the
+ * origin so (cx, cy) is the center of the bounding box, then scale.
+ */
+function Yoke({
+  cx,
+  cy,
+  width,
   color,
 }: {
-  cx?: number;
-  cy?: number;
-  scale?: number;
+  cx: number;
+  cy: number;
+  width: number;
   color: string;
 }) {
-  const w = 56 * scale;
-  const h = 26 * scale;
+  const scale = width / 200;
+  const height = 130 * scale;
+  const tx = cx - width / 2;
+  const ty = cy - height / 2;
   return (
-    <g transform={`translate(${cx - w / 2} ${cy - h / 2})`}>
-      <rect x="0" y="0" width={w} height={h * 0.45} rx={2 * scale} fill={color} />
-      <path d={`M0 ${h * 0.45} L0 ${h} L${w * 0.22} ${h} L${w * 0.22} ${h * 0.6} Z`} fill={color} />
-      <path
-        d={`M${w} ${h * 0.45} L${w} ${h} L${w * 0.78} ${h} L${w * 0.78} ${h * 0.6} Z`}
-        fill={color}
-      />
-      <rect
-        x={w * 0.45}
-        y={-h * 0.5}
-        width={w * 0.1}
-        height={h * 0.95}
-        rx={1 * scale}
-        fill={color}
-      />
+    <g transform={`translate(${tx} ${ty}) scale(${scale})`}>
+      <path d={YOKE_PATH} fill={color} />
     </g>
   );
 }
@@ -54,24 +51,24 @@ export function ConsoleIcon(props: SVGProps<SVGSVGElement>) {
     <svg {...COMMON} {...props}>
       {/* monitor frame */}
       <rect
-        x="36"
+        x="32"
         y="48"
-        width="168"
-        height="112"
+        width="176"
+        height="116"
         rx="10"
         stroke={accent}
         strokeWidth="6"
       />
       {/* title bar */}
-      <line x1="36" y1="72" x2="204" y2="72" stroke={accent} strokeWidth="3" opacity="0.5" />
-      <circle cx="48" cy="60" r="2.5" fill={accent} />
-      <circle cx="58" cy="60" r="2.5" fill={accent} opacity="0.6" />
-      <circle cx="68" cy="60" r="2.5" fill={accent} opacity="0.4" />
+      <line x1="32" y1="74" x2="208" y2="74" stroke={accent} strokeWidth="3" opacity="0.5" />
+      <circle cx="46" cy="61" r="2.8" fill={accent} />
+      <circle cx="56" cy="61" r="2.8" fill={accent} opacity="0.6" />
+      <circle cx="66" cy="61" r="2.8" fill={accent} opacity="0.4" />
       {/* stand */}
-      <rect x="108" y="160" width="24" height="16" fill={accent} />
-      <rect x="80" y="174" width="80" height="6" rx="3" fill={accent} />
-      {/* yoke head inside */}
-      <YokeHead cx={120} cy={116} scale={1.05} color={accent} />
+      <rect x="108" y="164" width="24" height="16" fill={accent} />
+      <rect x="78" y="178" width="84" height="6" rx="3" fill={accent} />
+      {/* yoke inside */}
+      <Yoke cx={120} cy={118} width={120} color={accent} />
     </svg>
   );
 }
@@ -81,16 +78,20 @@ export function RegistryIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg {...COMMON} {...props}>
       {/* isometric cube */}
-      <path d="M120 36 L196 78 L196 162 L120 204 L44 162 L44 78 Z" stroke={accent} strokeWidth="6" />
-      <path d="M120 36 L120 120" stroke={accent} strokeWidth="4" opacity="0.45" />
-      <path d="M44 78 L120 120" stroke={accent} strokeWidth="4" opacity="0.45" />
-      <path d="M196 78 L120 120" stroke={accent} strokeWidth="4" opacity="0.45" />
-      {/* version dots on top edge */}
-      <circle cx="80" cy="60" r="3" fill={accent} />
-      <circle cx="120" cy="50" r="3" fill={accent} />
-      <circle cx="160" cy="60" r="3" fill={accent} />
-      {/* yoke head on cube face */}
-      <YokeHead cx={120} cy={158} scale={0.95} color={accent} />
+      <path
+        d="M120 32 L200 76 L200 164 L120 208 L40 164 L40 76 Z"
+        stroke={accent}
+        strokeWidth="6"
+      />
+      <path d="M120 32 L120 120" stroke={accent} strokeWidth="4" opacity="0.45" />
+      <path d="M40 76 L120 120" stroke={accent} strokeWidth="4" opacity="0.45" />
+      <path d="M200 76 L120 120" stroke={accent} strokeWidth="4" opacity="0.45" />
+      {/* tag dots on top */}
+      <circle cx="80" cy="58" r="3" fill={accent} />
+      <circle cx="120" cy="48" r="3" fill={accent} />
+      <circle cx="160" cy="58" r="3" fill={accent} />
+      {/* yoke on the front face */}
+      <Yoke cx={120} cy={162} width={104} color={accent} />
     </svg>
   );
 }
@@ -101,25 +102,26 @@ export function OperatorIcon(props: SVGProps<SVGSVGElement>) {
     <svg {...COMMON} {...props}>
       {/* hexagon */}
       <path
-        d="M120 24 L208 76 L208 164 L120 216 L32 164 L32 76 Z"
+        d="M120 22 L210 74 L210 166 L120 218 L30 166 L30 74 Z"
         stroke={accent}
         strokeWidth="6"
       />
-      {/* inner hex grid */}
+      {/* inner hex */}
       <path
         d="M120 60 L172 92 L172 148 L120 180 L68 148 L68 92 Z"
         stroke={accent}
         strokeWidth="3"
         opacity="0.35"
       />
-      {/* small connection nodes */}
-      <circle cx="120" cy="24" r="5" fill={accent} />
-      <circle cx="208" cy="76" r="5" fill={accent} />
-      <circle cx="208" cy="164" r="5" fill={accent} />
-      <circle cx="120" cy="216" r="5" fill={accent} />
-      <circle cx="32" cy="164" r="5" fill={accent} />
-      <circle cx="32" cy="76" r="5" fill={accent} />
-      <YokeHead cx={120} cy={120} scale={1.05} color={accent} />
+      {/* corner nodes */}
+      <circle cx="120" cy="22" r="5" fill={accent} />
+      <circle cx="210" cy="74" r="5" fill={accent} />
+      <circle cx="210" cy="166" r="5" fill={accent} />
+      <circle cx="120" cy="218" r="5" fill={accent} />
+      <circle cx="30" cy="166" r="5" fill={accent} />
+      <circle cx="30" cy="74" r="5" fill={accent} />
+      {/* yoke at center */}
+      <Yoke cx={120} cy={120} width={112} color={accent} />
     </svg>
   );
 }
@@ -130,22 +132,22 @@ export function CloudIcon(props: SVGProps<SVGSVGElement>) {
     <svg {...COMMON} {...props}>
       {/* cloud silhouette */}
       <path
-        d="M72 132
+        d="M68 138
            a44 44 0 0 1 88 -22
-           a36 36 0 0 1 28 64
-           h-128
+           a36 36 0 0 1 32 64
+           h-132
            a32 32 0 0 1 12 -42 z"
         stroke={accent}
         strokeWidth="6"
       />
       <path
-        d="M88 132 a32 32 0 0 1 64 -16"
+        d="M84 138 a32 32 0 0 1 64 -16"
         stroke={accent}
         strokeWidth="3"
         opacity="0.35"
       />
-      {/* yoke head inside cloud */}
-      <YokeHead cx={120} cy={142} scale={0.95} color={accent} />
+      {/* yoke inside cloud */}
+      <Yoke cx={120} cy={150} width={108} color={accent} />
     </svg>
   );
 }
@@ -156,23 +158,24 @@ export function EnterpriseIcon(props: SVGProps<SVGSVGElement>) {
     <svg {...COMMON} {...props}>
       {/* shield */}
       <path
-        d="M120 28
-           L196 56
-           L196 120
-           Q196 176 120 212
-           Q44 176 44 120
-           L44 56 Z"
+        d="M120 26
+           L200 56
+           L200 124
+           Q200 178 120 214
+           Q40 178 40 124
+           L40 56 Z"
         stroke={accent}
         strokeWidth="6"
       />
-      {/* check mark accent */}
+      {/* check accent */}
       <path
-        d="M88 116 L112 140 L160 92"
+        d="M88 118 L112 142 L160 92"
         stroke={accent}
         strokeWidth="5"
         opacity="0.4"
       />
-      <YokeHead cx={120} cy={120} scale={1.0} color={accent} />
+      {/* yoke */}
+      <Yoke cx={120} cy={122} width={108} color={accent} />
     </svg>
   );
 }
@@ -181,21 +184,22 @@ export function MarketplaceIcon(props: SVGProps<SVGSVGElement>) {
   const accent = '#FBBF24';
   return (
     <svg {...COMMON} {...props}>
-      {/* cart body */}
+      {/* cart frame */}
       <path
-        d="M48 52 L72 52 L92 152 L188 152"
+        d="M44 52 L72 52 L92 156 L192 156"
         stroke={accent}
         strokeWidth="6"
       />
       <path
-        d="M82 96 L196 96 L184 144 L92 144"
+        d="M82 98 L200 98 L186 146 L94 146"
         stroke={accent}
         strokeWidth="6"
       />
       {/* wheels */}
-      <circle cx="104" cy="184" r="12" stroke={accent} strokeWidth="5" />
-      <circle cx="172" cy="184" r="12" stroke={accent} strokeWidth="5" />
-      <YokeHead cx={140} cy={120} scale={0.95} color={accent} />
+      <circle cx="106" cy="186" r="12" stroke={accent} strokeWidth="5" />
+      <circle cx="176" cy="186" r="12" stroke={accent} strokeWidth="5" />
+      {/* yoke on basket */}
+      <Yoke cx={141} cy={122} width={92} color={accent} />
     </svg>
   );
 }
