@@ -1,13 +1,12 @@
 import type { SVGProps } from 'react';
-import { YOKE_PATH } from './brand-mark';
+import { YOKE_PATH, YOKE_TRANSFORM } from './brand-mark';
 
 /**
  * Hand-authored SVG product icons. Each icon is a container shape (monitor,
- * cube, hexagon, cloud, shield, cart) with the real Joch yoke silhouette
- * embedded inside. Per-product accent colors match the brand sample sheet.
+ * cube, hexagon, cloud, shield, cart) with the official Joch yoke embedded
+ * inside via a nested <svg> using the verbatim brand path.
  *
- * The yoke path uses the same `YOKE_PATH` constant traced from
- * `assets/joch_logo_no_text_white_bg.png`, scaled and translated per icon.
+ * Per-product accent colors match the brand sample sheet.
  */
 
 const COMMON: SVGProps<SVGSVGElement> = {
@@ -19,29 +18,34 @@ const COMMON: SVGProps<SVGSVGElement> = {
 };
 
 /**
- * Renders the yoke silhouette centered at (cx, cy), scaled to `width` pixels
- * wide. The path natural size is 200 × 130 (aspect 1.538). We translate the
- * origin so (cx, cy) is the center of the bounding box, then scale.
+ * Renders the official yoke silhouette centered at (cx, cy) at the given
+ * `size`. Uses a nested <svg> with the canonical 500×500 viewBox so the
+ * brand path is reproduced byte-identically inside every icon.
  */
 function Yoke({
   cx,
   cy,
-  width,
+  size,
   color,
 }: {
   cx: number;
   cy: number;
-  width: number;
+  size: number;
   color: string;
 }) {
-  const scale = width / 200;
-  const height = 130 * scale;
-  const tx = cx - width / 2;
-  const ty = cy - height / 2;
   return (
-    <g transform={`translate(${tx} ${ty}) scale(${scale})`}>
-      <path d={YOKE_PATH} fill={color} />
-    </g>
+    <svg
+      x={cx - size / 2}
+      y={cy - size / 2}
+      width={size}
+      height={size}
+      viewBox="0 0 500 500"
+      overflow="visible"
+    >
+      <g transform={YOKE_TRANSFORM} fill={color}>
+        <path d={YOKE_PATH} />
+      </g>
+    </svg>
   );
 }
 
@@ -68,7 +72,7 @@ export function ConsoleIcon(props: SVGProps<SVGSVGElement>) {
       <rect x="108" y="164" width="24" height="16" fill={accent} />
       <rect x="78" y="178" width="84" height="6" rx="3" fill={accent} />
       {/* yoke inside */}
-      <Yoke cx={120} cy={118} width={120} color={accent} />
+      <Yoke cx={120} cy={118} size={130} color={accent} />
     </svg>
   );
 }
@@ -91,7 +95,7 @@ export function RegistryIcon(props: SVGProps<SVGSVGElement>) {
       <circle cx="120" cy="48" r="3" fill={accent} />
       <circle cx="160" cy="58" r="3" fill={accent} />
       {/* yoke on the front face */}
-      <Yoke cx={120} cy={162} width={104} color={accent} />
+      <Yoke cx={120} cy={162} size={120} color={accent} />
     </svg>
   );
 }
@@ -121,7 +125,7 @@ export function OperatorIcon(props: SVGProps<SVGSVGElement>) {
       <circle cx="30" cy="166" r="5" fill={accent} />
       <circle cx="30" cy="74" r="5" fill={accent} />
       {/* yoke at center */}
-      <Yoke cx={120} cy={120} width={112} color={accent} />
+      <Yoke cx={120} cy={120} size={130} color={accent} />
     </svg>
   );
 }
@@ -147,7 +151,7 @@ export function CloudIcon(props: SVGProps<SVGSVGElement>) {
         opacity="0.35"
       />
       {/* yoke inside cloud */}
-      <Yoke cx={120} cy={150} width={108} color={accent} />
+      <Yoke cx={120} cy={150} size={120} color={accent} />
     </svg>
   );
 }
@@ -175,7 +179,7 @@ export function EnterpriseIcon(props: SVGProps<SVGSVGElement>) {
         opacity="0.4"
       />
       {/* yoke */}
-      <Yoke cx={120} cy={122} width={108} color={accent} />
+      <Yoke cx={120} cy={122} size={120} color={accent} />
     </svg>
   );
 }
@@ -199,7 +203,7 @@ export function MarketplaceIcon(props: SVGProps<SVGSVGElement>) {
       <circle cx="106" cy="186" r="12" stroke={accent} strokeWidth="5" />
       <circle cx="176" cy="186" r="12" stroke={accent} strokeWidth="5" />
       {/* yoke on basket */}
-      <Yoke cx={141} cy={122} width={92} color={accent} />
+      <Yoke cx={141} cy={122} size={110} color={accent} />
     </svg>
   );
 }
