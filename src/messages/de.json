@@ -145,14 +145,15 @@
       "Google ADK",
       "Microsoft Agent Framework",
       "LangGraph",
-      "CrewAI",
       "Eigener Python-/TS-Code"
     ],
     "providers": [
       "OpenAI",
       "Anthropic",
       "Google",
+      "AWS Bedrock",
       "Microsoft Foundry",
+      "Google Vertex",
       "Ollama",
       "vLLM",
       "llama.cpp"
