@@ -1,3 +1,5 @@
+'use client';
+
 import { useTranslations } from 'next-intl';
 import {
   ListChecks,
@@ -8,6 +10,7 @@ import {
   UserCheck,
 } from 'lucide-react';
 import { SectionHeader } from '@/components/ui/section-header';
+import { Reveal, TiltCard } from '@/components/ui/motion-primitives';
 
 const ICON = {
   fleet: ListChecks,
@@ -27,23 +30,28 @@ export function UseCases() {
   return (
     <section className="relative bg-surface-2 border-y border-border">
       <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-28">
-        <SectionHeader kicker={t('kicker')} title={t('title')} />
+        <Reveal>
+          <SectionHeader kicker={t('kicker')} title={t('title')} />
+        </Reveal>
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((u) => {
+          {items.map((u, i) => {
             const Icon = ICON[u.key];
             return (
-              <div
-                key={u.key}
-                className="rounded-xl border border-border bg-surface p-6 transition hover:border-accent"
-              >
-                <div className="grid h-10 w-10 place-items-center rounded-md border border-border text-accent">
-                  <Icon className="h-5 w-5" />
-                </div>
-                <h3 className="mt-5 text-base font-semibold tracking-tight text-fg">
-                  {u.name}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{u.summary}</p>
-              </div>
+              <Reveal key={u.key} delay={i * 0.05}>
+                <TiltCard max={3}>
+                  <div className="rounded-xl border border-border bg-surface p-6 transition hover:border-accent">
+                    <div className="grid h-10 w-10 place-items-center rounded-md border border-border text-accent">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-5 text-base font-semibold tracking-tight text-fg">
+                      {u.name}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">
+                      {u.summary}
+                    </p>
+                  </div>
+                </TiltCard>
+              </Reveal>
             );
           })}
         </div>

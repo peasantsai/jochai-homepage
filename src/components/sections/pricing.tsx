@@ -1,6 +1,9 @@
+'use client';
+
 import { useTranslations } from 'next-intl';
 import { Check, ArrowRight } from 'lucide-react';
 import { SectionHeader } from '@/components/ui/section-header';
+import { Reveal } from '@/components/ui/motion-primitives';
 
 type Tier = {
   key: string;
@@ -21,17 +24,19 @@ export function Pricing() {
   return (
     <section id="pricing" className="anchor-offset relative">
       <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-28">
-        <SectionHeader
-          kicker={t('kicker')}
-          title={t('title')}
-          subtitle={t('subtitle')}
-        />
+        <Reveal>
+          <SectionHeader
+            kicker={t('kicker')}
+            title={t('title')}
+            subtitle={t('subtitle')}
+          />
+        </Reveal>
 
         <div className="mt-14 grid gap-5 lg:grid-cols-4">
-          {tiers.map((tier) => (
+          {tiers.map((tier, i) => (
+            <Reveal key={tier.key} delay={i * 0.07} className="h-full">
             <article
-              key={tier.key}
-              className={`relative flex flex-col rounded-xl border bg-surface p-6 transition ${
+              className={`relative flex h-full flex-col rounded-xl border bg-surface p-6 transition ${
                 tier.highlight
                   ? 'border-accent shadow-[0_0_0_1px_var(--color-accent)]'
                   : 'border-border hover:border-accent/60'
@@ -78,6 +83,7 @@ export function Pricing() {
                 <ArrowRight className="h-4 w-4" />
               </a>
             </article>
+            </Reveal>
           ))}
         </div>
 

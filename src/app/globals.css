@@ -101,5 +101,18 @@ body {
 
 /* Smooth theme transitions but keep accent crisp. */
 html {
-  transition: background-color 200ms ease, color 200ms ease;
+  transition: background-color 220ms ease, color 220ms ease;
 }
+
+/* Honor reduced motion globally for non-motion-library elements too. */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Smooth scroll for in-page anchors (fixed nav offset is handled by anchor-offset). */
+html { scroll-behavior: smooth; }

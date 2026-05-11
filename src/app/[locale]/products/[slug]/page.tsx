@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -9,6 +8,7 @@ import { Nav } from '@/components/nav';
 import { Footer } from '@/components/footer';
 import { Terminal } from '@/components/ui/terminal';
 import { GithubIcon } from '@/components/ui/icons';
+import { PRODUCT_ICONS, type ProductSlug } from '@/components/ui/product-icons';
 import { PageCta } from '@/components/sections/page-cta';
 import { routing } from '@/i18n/routing';
 
@@ -47,7 +47,7 @@ function ProductBody({ slug }: { slug: Slug }) {
   const tag = t(`${item}.tag`);
   const tagline = t(`${item}.tagline`);
   const summary = t(`${item}.summary`);
-  const image = t(`${item}.image`);
+  const Icon = PRODUCT_ICONS[slug];
   const features = t.raw(`${item}.features`) as Feature[];
   const includes = t.raw(`${item}.includes`) as string[];
   const cli = t.raw(`${item}.cli`) as Cli[];
@@ -117,14 +117,9 @@ function ProductBody({ slug }: { slug: Slug }) {
               <div className="absolute -inset-2 -z-10 rounded-xl bg-gradient-to-tr from-transparent via-transparent to-accent/20 blur-2xl" />
               <div className="relative aspect-square w-full overflow-hidden rounded-xl border border-border bg-surface-2 sm:aspect-[5/4]">
                 <div className="grid-bg absolute inset-0 opacity-30" />
-                <Image
-                  src={image}
-                  alt={name}
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-contain p-12"
-                />
+                <div className="absolute inset-0 grid place-items-center p-16">
+                  <Icon className="h-full w-full max-h-72 max-w-72" />
+                </div>
               </div>
             </div>
           </div>
