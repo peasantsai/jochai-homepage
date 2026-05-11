@@ -13,6 +13,9 @@
     "closeMenu": "Menü schließen",
     "themeLight": "Zum hellen Theme wechseln",
     "themeDark": "Zum dunklen Theme wechseln",
+    "theme": "Theme",
+    "themeLightLabel": "Hell",
+    "themeDarkLabel": "Dunkel",
     "language": "Sprache"
   },
   "hero": {

@@ -13,6 +13,9 @@
     "closeMenu": "Close menu",
     "themeLight": "Switch to light theme",
     "themeDark": "Switch to dark theme",
+    "theme": "Theme",
+    "themeLightLabel": "Light",
+    "themeDarkLabel": "Dark",
     "language": "Language"
   },
   "hero": {
