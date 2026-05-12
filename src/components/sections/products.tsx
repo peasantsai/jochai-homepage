@@ -1,30 +1,53 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Cloud, ShieldCheck, Box, ShoppingCart, AppWindow, GitBranch } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { SectionHeader } from '@/components/ui/section-header';
-import { PRODUCT_ICONS, type ProductSlug } from '@/components/ui/product-icons';
-import { Reveal, TiltCard } from '@/components/ui/motion-primitives';
+import { Reveal } from '@/components/ui/motion-primitives';
+import type { ProductSlug } from '@/components/ui/product-icons';
 
-type Product = {
-  key: ProductSlug;
-  name: string;
-  summary: string;
-  tag: string;
-  image: string;
+const ICONS: Record<ProductSlug, LucideIcon> = {
+  cloud: Cloud,
+  enterprise: ShieldCheck,
+  registry: Box,
+  marketplace: ShoppingCart,
+  console: AppWindow,
+  operator: GitBranch,
+};
+
+const COLORS: Record<ProductSlug, { fg: string; bg: string }> = {
+  cloud: { fg: '#6EA8FE', bg: 'rgba(110,168,254,0.10)' },
+  enterprise: { fg: '#10B981', bg: 'rgba(16,185,129,0.10)' },
+  registry: { fg: '#8B5CF6', bg: 'rgba(139,92,246,0.10)' },
+  marketplace: { fg: '#F59E0B', bg: 'rgba(245,158,11,0.10)' },
+  console: { fg: '#2563EB', bg: 'rgba(37,99,235,0.10)' },
+  operator: { fg: '#EC4899', bg: 'rgba(236,72,153,0.10)' },
+};
+
+const ORDER: ProductSlug[] = ['cloud', 'enterprise', 'registry', 'marketplace', 'console', 'operator'];
+
+type Product = { key: ProductSlug; name: string; summary: string; tag: string };
+
+const ECO_TAGS: Record<ProductSlug, string> = {
+  cloud: 'hosted',
+  enterprise: 'on-prem',
+  registry: 'oci',
+  marketplace: 'community',
+  console: 'operator ui',
+  operator: 'k8s',
 };
 
 export function Products() {
   const t = useTranslations('products');
-  const items = t.raw('items') as Product[];
+  const raw = t.raw('items') as Product[];
+  const byKey = new Map(raw.map((p) => [p.key, p]));
+  const items = ORDER.map((k) => byKey.get(k)).filter((x): x is Product => Boolean(x));
 
   return (
-    <section
-      id="products"
-      className="anchor-offset relative bg-surface-2 border-y border-border"
-    >
-      <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-28">
+    <section id="products" className="anchor-offset border-t border-border bg-surface-2">
+      <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24">
         <Reveal>
           <SectionHeader
             kicker={t('kicker')}
@@ -32,47 +55,40 @@ export function Products() {
             subtitle={t('subtitle')}
           />
         </Reveal>
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((p, idx) => {
-            const Icon = PRODUCT_ICONS[p.key];
+
+        <div className="mt-12 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((p, i) => {
+            const Icon = ICONS[p.key];
+            const c = COLORS[p.key];
             return (
-            <Reveal key={p.key} delay={idx * 0.05} className="h-full">
-            <TiltCard className="h-full" max={3}>
-            <Link
-              href={`/products/${p.key}`}
-              className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-surface transition hover:border-accent"
-            >
-              <div className="relative aspect-[16/10] overflow-hidden border-b border-border-soft bg-[color:var(--bg)]">
-                <div className="grid-bg absolute inset-0 opacity-40" />
-                <div className="absolute inset-0 grid place-items-center p-10 transition duration-500 group-hover:scale-[1.04]">
-                  <Icon className="h-32 w-32" />
-                </div>
-              </div>
-              <div className="flex flex-1 flex-col gap-3 p-6">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold tracking-tight text-fg">
-                    {p.name}
-                  </h3>
+              <Reveal key={p.key} delay={i * 0.04} className="h-full">
+                <Link
+                  href={`/products/${p.key}`}
+                  className="group relative flex h-full items-start gap-4 rounded-lg border border-border bg-surface p-5 transition hover:border-accent"
+                >
                   <span
-                    className={`rounded-sm border px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider ${
-                      p.tag.toLowerCase().includes('open')
-                        ? 'border-accent/40 text-accent'
-                        : 'border-border text-muted'
-                    }`}
+                    className="grid h-10 w-10 flex-none place-items-center rounded-lg border"
+                    style={{ background: c.bg, borderColor: c.fg, color: c.fg }}
                   >
-                    {p.tag}
+                    <Icon className="h-5 w-5" />
                   </span>
-                </div>
-                <p className="text-sm leading-relaxed text-muted">{p.summary}</p>
-                <span className="mt-2 inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-wider text-fg-soft transition group-hover:text-accent">
-                  Explore{' '}
-                  <ArrowUpRight className="h-3 w-3 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </span>
-              </div>
-            </Link>
-            </TiltCard>
-            </Reveal>
-          );})}
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-[15px] font-semibold tracking-tight text-fg">{p.name}</h3>
+                      <span
+                        className="rounded-sm px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.12em]"
+                        style={{ color: c.fg, background: c.bg }}
+                      >
+                        {ECO_TAGS[p.key]}
+                      </span>
+                    </div>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted">{p.summary}</p>
+                  </div>
+                  <ArrowUpRight className="h-3.5 w-3.5 flex-none text-muted opacity-0 transition group-hover:opacity-100" />
+                </Link>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

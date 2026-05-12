@@ -75,9 +75,9 @@ export function Nav() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
-        <Link href="/" className="flex items-center gap-2 text-fg" aria-label="Joch home">
+        <Link href="/" className="flex items-center gap-2 text-fg" aria-label="Crux Control home">
           <BrandMark size={28} />
-          <span className="text-lg font-semibold tracking-tight">Joch</span>
+          <span className="text-lg font-semibold tracking-tight">Crux</span>
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex">
@@ -91,7 +91,7 @@ export function Nav() {
             </Link>
           ))}
           <a
-            href="https://peasantsai.github.io/joch-docs/"
+            href="https://github.com/agenticfleet/cruxcontrol"
             target="_blank"
             rel="noreferrer"
             className="text-sm text-fg-soft transition hover:text-accent"
@@ -117,7 +117,7 @@ export function Nav() {
             {/* Sections — only on mobile where the nav bar hides them. */}
             <div className="flex flex-col gap-3 md:hidden">
               <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
-                // navigate
+                {'// navigate'}
               </p>
               {SECTIONS.map((s) => (
                 <Link
@@ -130,7 +130,7 @@ export function Nav() {
                 </Link>
               ))}
               <a
-                href="https://peasantsai.github.io/joch-docs/"
+                href="https://github.com/agenticfleet/cruxcontrol"
                 target="_blank"
                 rel="noreferrer"
                 className="text-base text-fg transition hover:text-accent"
@@ -205,10 +205,10 @@ export function Nav() {
             {/* GitHub */}
             <div className="flex flex-col gap-3 md:ml-auto">
               <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
-                // open source
+                {'// open source'}
               </p>
               <a
-                href="https://github.com/peasantsai"
+                href="https://github.com/agenticfleet/cruxcontrol"
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => setOpen(false)}

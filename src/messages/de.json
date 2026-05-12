@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Joch — Die Steuerungsebene für KI-Agentenflotten",
-    "description": "Joch ist die anbieterneutrale Steuerungsebene zum Sichern, Steuern und Betreiben von KI-Agentenflotten über alle SDKs, Modelle, Tools und Laufzeiten hinweg."
+    "title": "Crux Control - Anbieterneutrale Steuerungsebene fuer KI-Agenten",
+    "description": "Entdecken, steuern, routen und beobachten Sie verwaltete CLI-Agenten und eigene Agenten aus einer lokalen Steuerungsebene."
   },
   "nav": {
     "product": "Produkt",
@@ -19,133 +19,225 @@
     "language": "Sprache"
   },
   "hero": {
-    "eyebrow": "Open-Source-Steuerungsebene für Agenten",
-    "title": "Spannen Sie Ihre Agentenflotte ein.",
-    "subtitle": "Joch ist die anbieterneutrale Steuerungsebene zum Sichern, Steuern und Betreiben von KI-Agenten über jedes Modell, Framework, Tool und jede Laufzeit hinweg.",
-    "ctaPrimary": "Zur Dokumentation",
-    "ctaSecondary": "Auf GitHub starren",
-    "terminalTitle": "joch — Operator-Shell",
-    "terminalLines": [
-      { "prompt": "$ joch get agents", "out": "12 Agenten · 4 Frameworks · 3 Anbieter" },
-      { "prompt": "$ joch trace exec-7d3f", "out": "143 Ereignisse · 11 Tool-Aufrufe · 1 Freigabe offen" },
-      { "prompt": "$ joch approve call-456", "out": "von Ihnen freigegeben · email.send → resend" },
-      { "prompt": "$ joch abom support-agent", "out": "AgBOM · CycloneDX · 1 Modell · 9 Tools · 2 MCP" }
+    "eyebrow": "Open-Source-Steuerungsebene fuer Agentenbetrieb",
+    "titlePrefix": "Autonome Agenten werden zu",
+    "titleAccent": "verantwortbaren Workforces.",
+    "subtitle": "Crux Control entdeckt installierte Agenten, steuert ihre MCP-Tool-Aufrufe, routet Arbeit ueber Anbieter hinweg und gibt Operatoren eine nachvollziehbare Kommandoebene.",
+    "ctaPrimary": "Foundation-Plan lesen",
+    "ctaSecondary": "Auf GitHub ansehen",
+    "ringPolicies": "Richtlinien",
+    "ringApprovals": "Freigaben",
+    "ringGateways": "MCP-Gateway",
+    "ringObservability": "Traces",
+    "trust": [
+      "Anbieterneutral",
+      "Lokal zuerst",
+      "MCP-gesteuert",
+      "Open Core"
     ]
   },
-  "problem": {
-    "kicker": "Die Fragen, die Anbieter-SDKs dem Betreiber überlassen",
+  "stats": {
+    "kicker": "Foundation Scope - Plan 1",
+    "title": "Der erste Crux-Release fokussiert lokalen Agentenbetrieb.",
+    "lastSync": "Ziel-Baseline - 2026-05-12",
     "items": [
-      "Welche Agenten existieren in meinem Unternehmen, und wer ist für sie verantwortlich?",
-      "Welche Modelle, Tools, MCP-Server und Speicher nutzt jeder Agent?",
-      "Was hat jeder Agent gestern getan — und was hat es gekostet?",
-      "Kann ich einen Agenten von OpenAI auf Claude umziehen — und was würde brechen?",
-      "Kann ich allen Agenten den Aufruf von email.send ohne Freigabe blockieren?",
-      "Kann ich denselben Agenten lokal, in Docker und in Kubernetes ausrollen?",
-      "Kann ich zwei Agenten-Versionen vergleichen, bevor ich produktiv schalte?",
-      "Welche MCP-Server sind angepinnt, welche wurden diese Woche stillgelegt?"
+      {
+        "label": "LOKALE API",
+        "value": ":7700",
+        "delta": "crux-server HTTP-Steuerungsebene"
+      },
+      {
+        "label": "STATE STORE",
+        "value": "SQLite",
+        "delta": "~/.local/share/crux/crux.db"
+      },
+      {
+        "label": "MANAGED AGENTS",
+        "value": "3+",
+        "delta": "Claude Code, Codex, Gemini CLI"
+      },
+      {
+        "label": "STEUERUNG",
+        "value": "MCP",
+        "delta": "Gateway-Injektion und Tool-Audit"
+      }
+    ]
+  },
+  "features": {
+    "kicker": "Control plane - core primitives",
+    "title": "Agenten oberhalb der Framework-Schicht betreiben.",
+    "subtitle": "Crux ist kein weiteres Agenten-SDK. Es ist die Betriebsschicht ueber jedem Runtime: Inventar, Ausfuehrung, Policy und Trace.",
+    "items": [
+      {
+        "key": "orchestrate",
+        "name": "Discover and dispatch",
+        "summary": "Scan PATH and native MCP configs, register managed agents, then dispatch jobs with context packs through the `crux` CLI.",
+        "tags": [
+          "discover",
+          "run",
+          "context",
+          "fallback"
+        ]
+      },
+      {
+        "key": "observe",
+        "name": "Trace every run",
+        "summary": "Capture subprocess output, execution status, trace events, cost estimates, and handoff records in one local control plane.",
+        "tags": [
+          "trace",
+          "cost",
+          "events",
+          "sqlite"
+        ]
+      },
+      {
+        "key": "govern",
+        "name": "Govern MCP tools",
+        "summary": "Inject the Crux MCP gateway so managed agents route tool calls through allow, deny, approval, and audit policy.",
+        "tags": [
+          "mcp",
+          "policy",
+          "approval",
+          "audit"
+        ]
+      },
+      {
+        "key": "extend",
+        "name": "Unify custom agents",
+        "summary": "Bring SDK-built agents through Crux-owned adapters and model gateways for deeper model-call observability and routing.",
+        "tags": [
+          "adapters",
+          "models",
+          "gateway",
+          "agbom"
+        ]
+      }
+    ]
+  },
+  "console": {
+    "kicker": "Crux Console - Operator-Oberflaeche",
+    "title": "Eine Operator-Ansicht fuer verwaltete und eigene Agenten.",
+    "subtitle": "Pruefen Sie Runs, MCP-Tool-Aufrufe, Freigaben, Fallbacks und Kontext-Pakete aus einer Oberflaeche.",
+    "host": "crux.invariantcontinuum.io / local fleet - localhost:7700",
+    "flowLabel": "Ausfuehrungsfluss",
+    "tracesLabel": "Aktuelle Traces",
+    "approvalsLabel": "Freigaben",
+    "topAgentsLabel": "Top-Agenten nach Ausfuehrungen (7d)"
+  },
+  "problem": {
+    "kicker": "Die Fragen, die Anbieter-SDKs dem Betrieb ueberlassen",
+    "items": [
+      "Which agents are installed across our machines, and who owns them?",
+      "Which MCP servers and tools can each agent reach?",
+      "Can we route a job from Claude Code to Codex when the first agent fails or hits a limit?",
+      "Can we preserve enough context to hand work between agents without starting over?",
+      "Can we block a dangerous tool call before a managed CLI agent executes it?",
+      "Can we estimate cost from captured executions even when the provider auth lives outside Crux?",
+      "Can custom SDK agents share the same inventory, policy, and trace model?",
+      "Can we sync a local fleet into an organization-wide cloud control plane later?"
     ],
-    "footnote": "Wer zehn, hundert oder tausend Agenten betreibt, braucht eine Steuerungsebene."
+    "footnote": "Wenn Agenten echte Arbeit erledigen, brauchen sie eine Steuerungsebene, bevor sie unkontrollierbar werden."
   },
   "pillars": {
-    "kicker": "Fünf Säulen",
-    "title": "Agenten wie Produktionsinfrastruktur betreiben.",
-    "subtitle": "Joch organisiert alles, was Sie zum sicheren Betrieb von KI-Agenten brauchen — vom Inventar bis zum Release-Management.",
+    "kicker": "Five pillars",
+    "title": "Agenten wie verantwortbare Infrastruktur betreiben.",
+    "subtitle": "Crux organisiert Inventar, Governance, Portabilitaet, Beobachtbarkeit und Release-Disziplin ueber Anbieter und Frameworks hinweg.",
     "items": [
       {
         "key": "inventory",
-        "name": "Inventar",
-        "summary": "Ein einheitliches Verzeichnis für jeden Agenten, jedes Modell, Tool, jeden MCP-Server, Speicher und Verantwortlichen — unabhängig vom SDK.",
-        "href": "https://peasantsai.github.io/joch-docs/pillars/inventory/"
+        "name": "Inventory",
+        "summary": "A single registry for managed CLI agents, custom SDK agents, MCP servers, model routes, owners, and runtime status.",
+        "href": "https://github.com/agenticfleet/cruxcontrol"
       },
       {
         "key": "governance",
-        "name": "Steuerung",
-        "summary": "Portable Policy-as-Code für Tool-Nutzung, Datenzugriff, Freigaben, Modellwahl und Budgets — einheitlich über SDKs hinweg durchgesetzt.",
-        "href": "https://peasantsai.github.io/joch-docs/pillars/governance/"
+        "name": "Governance",
+        "summary": "Policy for tool calls, approvals, budget limits, provider access, and prompt-injection scanning at the gateway boundary.",
+        "href": "https://github.com/agenticfleet/cruxcontrol"
       },
       {
         "key": "portability",
-        "name": "Portabilität",
-        "summary": "Ein Agenten-Datensatz läuft lokal, in Docker, auf Kubernetes oder in verwalteten Laufzeiten; Konversationsstand wandert zwischen Anbietern.",
-        "href": "https://peasantsai.github.io/joch-docs/pillars/portability/"
+        "name": "Portability",
+        "summary": "Context packs and state checkpoints let work move across Claude Code, Codex, Gemini CLI, and custom agents.",
+        "href": "https://github.com/agenticfleet/cruxcontrol"
       },
       {
         "key": "observability",
-        "name": "Beobachtbarkeit",
-        "summary": "Jeder Modell- und Tool-Aufruf, jede Speicheroperation und jede Freigabe wird als Ereignis erfasst — exportiert nach OpenTelemetry und OCSF.",
-        "href": "https://peasantsai.github.io/joch-docs/pillars/observability/"
+        "name": "Observability",
+        "summary": "Execution traces, MCP decisions, stdout/stderr captures, cost estimates, and AgBOM records in one queryable store.",
+        "href": "https://github.com/agenticfleet/cruxcontrol"
       },
       {
         "key": "release",
-        "name": "Release-Management",
-        "summary": "Versionieren, evaluieren, vergleichen, freigeben und zurückrollen wie bei Produktionssoftware — mit Qualitätsschranken gegen Regressionen.",
-        "href": "https://peasantsai.github.io/joch-docs/pillars/release-management/"
+        "name": "Release Management",
+        "summary": "Version policies, adapters, MCP server definitions, and agent profiles before they are promoted across a fleet.",
+        "href": "https://github.com/agenticfleet/cruxcontrol"
       }
     ]
   },
   "products": {
-    "kicker": "Produkt-Oberflächen",
-    "title": "Eine Steuerungsebene. Sechs Oberflächen.",
-    "subtitle": "Inspizieren, steuern, verteilen und betreiben — mit Open-Source-Tools, gehostetem SaaS oder selbst-gehosteter Enterprise-Distribution.",
+    "kicker": "Platform surfaces",
+    "title": "Eine Steuerungsebene. Sechs Betriebsoberflaechen.",
+    "subtitle": "Starten Sie lokal mit `crux` und wachsen Sie zu Gateways, Fleet-Dashboards, Kubernetes und Cloud-Sync ohne Modellwechsel.",
     "items": [
       {
         "key": "console",
-        "name": "Joch Console",
-        "summary": "Open-Source-Web-Konsole für Inventar, Traces, Freigaben, AgBOM und Kostenansichten.",
+        "name": "Crux Console",
+        "summary": "Web console for fleet inventory, executions, traces, approvals, MCP policy, AgBOM, and cost views.",
         "tag": "Open Source",
-        "image": "/brand/joch_console.png"
+        "image": "/brand/crux_console.png"
       },
       {
         "key": "registry",
-        "name": "Joch Registry",
-        "summary": "Offenes Verzeichnis wiederverwendbarer Agenten-Vorlagen, Policies sowie Tool- und MCP-Definitionen.",
+        "name": "Crux MCP Registry",
+        "summary": "Registry of discovered MCP servers, tool schemas, trust scores, version pins, and policy state.",
         "tag": "Open Source",
-        "image": "/brand/joch_registry.png"
+        "image": "/brand/crux_registry.png"
       },
       {
         "key": "operator",
-        "name": "Joch Operator",
-        "summary": "Kubernetes-Operator, der Agenten, Policies und Traces als erstklassige Ressourcen abgleicht.",
+        "name": "Crux Operator",
+        "summary": "Kubernetes operator for reconciling agents, gateways, policies, executions, and traces as resources.",
         "tag": "Open Source",
-        "image": "/brand/joch_operator.png"
+        "image": "/brand/crux_operator.png"
       },
       {
         "key": "cloud",
-        "name": "Joch Cloud",
-        "summary": "Gehostete Mehrmandanten-Steuerungsebene mit SSO, RBAC, Aufbewahrung und SLA — Ihre Laufzeit, unsere Steuerungsebene.",
-        "tag": "Kommerziell",
-        "image": "/brand/joch_cloud.png"
+        "name": "Crux Cloud",
+        "summary": "Hosted organization control plane for fleet enrollment, retention, RBAC, SSO, and approval routing.",
+        "tag": "Commercial",
+        "image": "/brand/crux_cloud.png"
       },
       {
         "key": "enterprise",
-        "name": "Joch Enterprise",
-        "summary": "Selbst-gehostete Enterprise-Distribution mit Airgap-Installer, gehärteten Images und FedRAMP-fähigem Paket.",
-        "tag": "Kommerziell",
-        "image": "/brand/joch_enterprise.png"
+        "name": "Crux Enterprise",
+        "summary": "Self-hosted hardened distribution for regulated, air-gapped, or dedicated-control-plane deployments.",
+        "tag": "Commercial",
+        "image": "/brand/crux_enterprise.png"
       },
       {
         "key": "marketplace",
-        "name": "Joch Marketplace",
-        "summary": "Geprüfte MCP-Server und Tools mit Signaturen, Sicherheitsprüfung und SLAs.",
-        "tag": "Kommerziell",
-        "image": "/brand/joch_marketplace.png"
+        "name": "Crux MCP Catalog",
+        "summary": "Curated MCP servers and tool definitions with signing, review metadata, and policy templates.",
+        "tag": "Commercial",
+        "image": "/brand/crux_marketplace.png"
       }
     ]
   },
   "integrations": {
-    "kicker": "Bring jeden Agenten. Lass ihn überall laufen.",
-    "title": "Anbieterneutral by Design.",
-    "subtitle": "Joch sitzt über Ihren SDKs und Anbietern. Frameworks oder Modelle wechseln, ohne Steuerung neu zu schreiben.",
-    "sdksLabel": "SDKs & Frameworks",
-    "providersLabel": "Modellanbieter",
-    "runtimesLabel": "Laufzeiten",
+    "kicker": "Jeden Agenten mitbringen. Native Auth behalten.",
+    "title": "Vendor-neutral by design.",
+    "subtitle": "Crux sitzt ueber installierten CLIs, SDK-Agenten, Providern und MCP-Servern, ohne das Framework zu ersetzen.",
+    "sdksLabel": "Agents and frameworks",
+    "providersLabel": "Model providers",
+    "runtimesLabel": "Runtimes",
     "sdks": [
+      "Claude Code",
+      "OpenAI Codex CLI",
+      "Gemini CLI",
       "OpenAI Agents SDK",
-      "Claude Agent SDK",
-      "Google ADK",
-      "Microsoft Agent Framework",
-      "LangGraph",
-      "Eigener Python-/TS-Code"
+      "Anthropic API",
+      "Custom Python / TS"
     ],
     "providers": [
       "OpenAI",
@@ -158,350 +250,545 @@
       "vLLM",
       "llama.cpp"
     ],
-    "runtimes": ["Lokal", "Docker", "Kubernetes", "Verwaltete Laufzeiten"]
+    "runtimes": [
+      "Local",
+      "Docker",
+      "Kubernetes",
+      "Self-hosted",
+      "Crux Cloud"
+    ]
   },
   "useCases": {
-    "kicker": "Anwendungsfälle",
-    "title": "Was Betreiber mit Joch tun.",
+    "kicker": "Use cases",
+    "title": "Was Operatoren mit Crux tun.",
     "items": [
       {
         "key": "fleet",
-        "name": "Flotten-Inventar",
-        "summary": "Jeden Agenten über SDKs und Teams hinweg entdecken, registrieren und katalogisieren — an einem Ort."
+        "name": "Agent Discovery",
+        "summary": "Find installed CLI agents and custom agents, import their metadata, and track owners in one fleet."
       },
       {
         "key": "mcp",
-        "name": "MCP-Steuerung",
-        "summary": "MCP-Server flottenweit anpinnen, scannen, isolieren und stilllegen."
+        "name": "MCP Governance",
+        "summary": "Proxy MCP tool calls through allowlists, blocks, approvals, audit trails, and prompt-injection scans."
       },
       {
         "key": "migration",
-        "name": "Anbieterwechsel",
-        "summary": "Eine laufende Konversation mit deterministischem Checkpoint und Capability-Check zwischen Anbietern verschieben."
+        "name": "Fallback Routing",
+        "summary": "Hand a job and its packed context from one agent to the next when a run fails, stalls, or reaches limits."
       },
       {
         "key": "cost",
-        "name": "Kostenkontrolle",
-        "summary": "Agenten-Kosten teamübergreifend deckeln, zuordnen und alarmieren — ohne Code-Änderungen."
+        "name": "Cost Awareness",
+        "summary": "Estimate and attribute execution cost from captured traces without taking over provider authentication."
       },
       {
         "key": "release",
-        "name": "Release-Schranken",
-        "summary": "Promotionen blockieren bei fehlgeschlagenen Evals, AgBOM-Regressionen oder fehlenden Freigaben."
+        "name": "Fleet Profiles",
+        "summary": "Export, import, and promote known-good agent, policy, MCP, and model-route profiles across machines."
       },
       {
         "key": "approvals",
-        "name": "Freigaben",
-        "summary": "Menschliche Freigaben für riskante Tool-Aufrufe einholen, ohne den Agentenlauf zu blockieren."
+        "name": "Human Approvals",
+        "summary": "Queue risky tool calls for review and preserve the decision in the execution trace."
       }
     ]
   },
   "pricing": {
-    "kicker": "Preise",
-    "title": "Open-Core. Ehrliche Preise.",
-    "subtitle": "Bezahlt wird die Steuerungsebene, niemals die Inferenz. Der Open-Source-Kern reicht für produktive Flotten.",
-    "billed": "monatliche Abrechnung",
+    "kicker": "Pricing",
+    "title": "Open-Core. Bezahlt wird die Betriebsoberflaeche.",
+    "subtitle": "Der Apache-2.0-Kern ist vollstaendig selbst hostbar. Kommerzielle Stufen ergaenzen Hosting, Retention, Org-Kontrollen, Support und Compliance im Flottenmassstab.",
+    "billed": "monatlich abgerechnet",
     "cta": "Loslegen",
     "ctaContact": "Vertrieb kontaktieren",
     "tiers": [
       {
         "key": "oss",
         "name": "Open Source",
-        "price": "Kostenlos",
+        "price": "Free",
         "priceNote": "Apache-2.0",
-        "summary": "Vollständige Steuerungsebene, Gateways, AOS-Exporter, CLI, Console — komplett selbst-hostbar.",
+        "summary": "Local Crux CLI, server, worker, gateway, MCP governance, console, adapters, and exports.",
         "features": [
-          "Komplette Steuerungsebene + Console + Operator",
-          "Tool- & MCP-Gateway",
-          "AOS-konforme AgBOMs und Traces",
-          "Framework- & Anbieter-Adapter",
-          "Community-Support",
-          "Helm-Chart, Container-Images, Homebrew"
+          "crux CLI and local crux-server",
+          "SQLite-backed local control plane",
+          "Managed-agent discovery and execution",
+          "MCP gateway and tool-call audit",
+          "Framework and provider adapters",
+          "Self-hosted console and Kubernetes operator"
         ],
         "ctaKey": "cta",
-        "ctaHref": "https://github.com/peasantsai",
+        "ctaHref": "https://github.com/agenticfleet/cruxcontrol",
         "highlight": false
       },
       {
         "key": "starter",
         "name": "Cloud Starter",
-        "price": "Kostenlos",
-        "priceNote": "für kleine Teams",
-        "summary": "Gehostete Steuerungsebene ohne Hosting-Aufwand. Limits für Agenten, Ausführungen und Aufbewahrung.",
+        "price": "Free",
+        "priceNote": "personal fleets",
+        "summary": "Hosted control plane for small fleets that need sync and short retention without running infrastructure.",
         "features": [
-          "Gehostete Mehrmandanten-Steuerungsebene",
-          "Gehostete Console",
-          "Verwaltete AgBOM- & Trace-Speicherung",
-          "Tunnel zur Kunden-Laufzeit",
-          "Community-geprüfter MCP-Katalog",
-          "Best-Effort-Antworten"
+          "Hosted multi-tenant control plane",
+          "7-day trace and AgBOM retention",
+          "Personal fleet sync",
+          "Community MCP catalog",
+          "Hosted console",
+          "Best-effort support"
         ],
         "ctaKey": "cta",
-        "ctaHref": "https://github.com/peasantsai",
+        "ctaHref": "https://github.com/agenticfleet/cruxcontrol",
         "highlight": false
       },
       {
         "key": "team",
         "name": "Cloud Team",
-        "price": "Pro Agent",
-        "priceNote": "+ Ausführungs-Überschreitung",
-        "summary": "Die übliche Einstiegsstufe für Engineering-Organisationen.",
+        "price": "Per agent",
+        "priceNote": "per month",
+        "summary": "The organization tier for shared fleets, policy rollout, approvals, SSO, and audit export.",
         "features": [
-          "Alles aus Starter",
-          "SSO / SCIM, RBAC",
-          "Premium-Konnektoren",
-          "Multi-Region Trace & AgBOM (90 Tage)",
-          "Slack-/E-Mail-Freigabe-Routing",
-          "Audit-Export an SIEM",
-          "Geschäftszeit-Support · 99,9 % SLA"
+          "Everything in Starter",
+          "Distributed fleet enrollment",
+          "Org-wide MCP allowlist and policy push",
+          "SSO / SCIM / RBAC",
+          "90-day trace and AgBOM retention",
+          "Slack / email approval routing",
+          "SIEM-compatible audit export"
         ],
         "ctaKey": "cta",
-        "ctaHref": "https://github.com/peasantsai",
+        "ctaHref": "https://github.com/agenticfleet/cruxcontrol",
         "highlight": true
       },
       {
         "key": "enterprise",
         "name": "Cloud Enterprise",
-        "price": "Individuell",
-        "priceNote": "kapazitätsbasiert",
-        "summary": "Für regulierte Branchen und große Flotten mit Anspruch auf dediziertes Hosting.",
+        "price": "Custom",
+        "priceNote": "capacity-based",
+        "summary": "Dedicated hosting, regulated retention, support, and hardened delivery for large or sensitive fleets.",
         "features": [
-          "Alles aus Team",
-          "Erweiterte Policy-Pakete",
-          "Signierter MCP-/Tool-Marketplace",
-          "Dedizierte Steuerungsebene in Ihrer Cloud",
-          "FedRAMP / SOC 2 / ISO 27001",
-          "Erweiterte Eval-Pakete · Custom-Integrationen",
-          "24×7 mit benanntem TAM · 99,95 % SLA"
+          "Everything in Team",
+          "Dedicated control plane",
+          "Custom retention and data residency",
+          "Advanced policy and eval packs",
+          "Signed MCP catalog",
+          "FedRAMP / SOC 2 / ISO 27001 support",
+          "24x7 support and named TAM"
         ],
         "ctaKey": "ctaContact",
-        "ctaHref": "mailto:hello@peasants.ai",
+        "ctaHref": "mailto:hello@invariantcontinuum.io",
         "highlight": false
       }
     ],
     "footnoteTitle": "Brauchen Sie selbst-gehostetes Enterprise?",
-    "footnoteBody": "Joch Enterprise liefert jede Cloud-Funktion in einer airgap-fähigen Distribution mit gehärteten Images, FedRAMP-Paket und einem dedizierten CVE-Kanal.",
+    "footnoteBody": "Crux Enterprise packages the cloud operations layer for air-gapped and dedicated environments with hardened images, policy packs, and compliance evidence.",
     "footnoteCta": "Sprechen Sie mit uns",
-    "footnoteHref": "mailto:hello@peasants.ai"
+    "footnoteHref": "mailto:hello@invariantcontinuum.io"
   },
   "cta": {
-    "kicker": "Keine ungesteuerten Agenten.",
-    "title": "Jeden Agenten steuern. Jede Aktion auditieren.",
-    "subtitle": "Setzen Sie Joch vor Ihre Flotte. Entdecken, steuern, tracen, freigeben, ausrollen, zurückrollen.",
-    "primary": "Zur Dokumentation",
-    "secondary": "Auf GitHub starren"
+    "kicker": "No unmanaged agents.",
+    "title": "Bringen Sie Ihre Agentenflotte unter Kontrolle.",
+    "subtitle": "Starten Sie mit lokaler Discovery und Ausfuehrung. Ergaenzen Sie MCP-Governance, Traces, Freigaben und Cloud-Sync, wenn die Flotte waechst.",
+    "primary": "Repository oeffnen",
+    "secondary": "Auf GitHub starren",
+    "install": "$ go install github.com/agenticfleet/cruxcontrol/cmd/crux@latest"
   },
   "footer": {
-    "tagline": "Das Joch für autonome Systeme.",
+    "tagline": "Anbieterneutrale Steuerungsebene fuer KI-Agentenflotten. Gebaut von AgenticFleet. Open Source unter Apache-2.0.",
     "columns": {
       "product": {
         "label": "Produkt",
         "links": [
-          { "label": "Joch Console", "href": "/products/console" },
-          { "label": "Joch Registry", "href": "/products/registry" },
-          { "label": "Joch Operator", "href": "/products/operator" },
-          { "label": "Joch Cloud", "href": "/products/cloud" },
-          { "label": "Joch Enterprise", "href": "/products/enterprise" },
-          { "label": "Joch Marketplace", "href": "/products/marketplace" },
-          { "label": "Preise", "href": "/pricing" }
+          {
+            "label": "Crux Cloud",
+            "href": "/products/cloud"
+          },
+          {
+            "label": "Crux Enterprise",
+            "href": "/products/enterprise"
+          },
+          {
+            "label": "Crux MCP Registry",
+            "href": "/products/registry"
+          },
+          {
+            "label": "Crux MCP Catalog",
+            "href": "/products/marketplace"
+          },
+          {
+            "label": "Crux Console",
+            "href": "/products/console"
+          },
+          {
+            "label": "Crux Operator",
+            "href": "/products/operator"
+          },
+          {
+            "label": "Preise",
+            "href": "/pricing"
+          }
+        ]
+      },
+      "developers": {
+        "label": "Entwickler",
+        "links": [
+          {
+            "label": "Repository",
+            "href": "https://github.com/agenticfleet/cruxcontrol"
+          },
+          {
+            "label": "Foundation plan",
+            "href": "https://github.com/agenticfleet/cruxcontrol"
+          },
+          {
+            "label": "Architecture",
+            "href": "https://github.com/agenticfleet/cruxcontrol"
+          },
+          {
+            "label": "MCP gateway",
+            "href": "https://github.com/agenticfleet/cruxcontrol"
+          }
         ]
       },
       "resources": {
         "label": "Ressourcen",
         "links": [
-          { "label": "Dokumentation", "href": "https://peasantsai.github.io/joch-docs/" },
-          { "label": "Architektur", "href": "https://peasantsai.github.io/joch-docs/architecture/" },
-          { "label": "Ressourcen-Katalog", "href": "https://peasantsai.github.io/joch-docs/specs/" },
-          { "label": "AOS-Konformität", "href": "https://peasantsai.github.io/joch-docs/aos/" }
+          {
+            "label": "GitHub",
+            "href": "https://github.com/agenticfleet/cruxcontrol"
+          },
+          {
+            "label": "Issues",
+            "href": "https://github.com/agenticfleet/cruxcontrol/issues"
+          },
+          {
+            "label": "Releases",
+            "href": "https://github.com/agenticfleet/cruxcontrol/releases"
+          },
+          {
+            "label": "Roadmap",
+            "href": "https://github.com/agenticfleet/cruxcontrol/projects"
+          }
         ]
       },
-      "community": {
-        "label": "Community",
+      "company": {
+        "label": "Unternehmen",
         "links": [
-          { "label": "GitHub", "href": "https://github.com/peasantsai" },
-          { "label": "Mitwirken", "href": "https://peasantsai.github.io/joch-docs/community/contributing/" },
-          { "label": "Governance", "href": "https://peasantsai.github.io/joch-docs/community/governance/" },
-          { "label": "FAQ", "href": "https://peasantsai.github.io/joch-docs/community/faq/" }
+          {
+            "label": "AgenticFleet",
+            "href": "https://github.com/agenticfleet"
+          },
+          {
+            "label": "Open source",
+            "href": "https://github.com/agenticfleet/cruxcontrol"
+          },
+          {
+            "label": "Contact",
+            "href": "mailto:hello@invariantcontinuum.io"
+          }
         ]
       }
     },
-    "license": "Apache-2.0 · Open Source von PeasantsAI",
-    "copyright": "© {year} PeasantsAI. Alle Rechte vorbehalten."
+    "badges": [
+      "Apache-2.0",
+      "MCP Gateway",
+      "OpenTelemetry-ready"
+    ],
+    "copyright": "© {year} AgenticFleet. Crux Control™ is a trademark of AgenticFleet."
   },
   "productPages": {
     "shared": {
       "back": "Alle Produkte",
-      "tagline": "Slogan",
+      "tagline": "Tagline",
       "featuresLabel": "Funktionen",
-      "includesLabel": "Im Lieferumfang",
+      "includesLabel": "Enthalten",
       "cliLabel": "Operator-Sicht",
-      "ctaPrimary": "Zur Dokumentation",
+      "ctaPrimary": "Repository oeffnen",
       "ctaSecondary": "Auf GitHub starren",
-      "finalCtaTitle": "Bringen Sie diese Oberfläche heute live.",
-      "finalCtaSubtitle": "Installieren Sie den Open-Source-Kern oder starten Sie auf Cloud — gleiche Steuerungsebene, gleiche Audit-Spur.",
-      "metaSuffix": "Joch — die Steuerungsebene für KI-Agentenflotten"
+      "finalCtaTitle": "Harness this surface today.",
+      "finalCtaSubtitle": "Install the open-source core locally or connect a fleet to Crux Cloud when operations need shared control.",
+      "metaSuffix": "Crux Control - AI agent control plane"
     },
     "items": {
       "console": {
-        "name": "Joch Console",
+        "name": "Crux Console",
         "tag": "Open Source",
-        "tagline": "Jeden Agenten sehen. Jede Aktion freigeben.",
-        "summary": "Joch Console ist die Open-Source-Web-Oberfläche auf der Joch-Steuerungsebene. Die Glasscheibe, vor der Ihre Operator sitzen, wenn sie wissen müssen, was ein Agent getan, gekostet und angefasst hat.",
-        "image": "/brand/joch_console.png",
+        "tagline": "See every agent. Approve every action.",
+        "summary": "Crux Console is the operator UI for the Crux control plane: fleet inventory, executions, traces, approvals, MCP decisions, AgBOM records, and cost views.",
+        "image": "/brand/crux_console.png",
         "features": [
-          { "name": "Inventar-Ansicht", "summary": "Jeder Agent über jedes SDK in einer durchsuchbaren Liste. Filtern nach Verantwortlichem, Framework, Modell, MCP-Server oder Laufzeit." },
-          { "name": "Trace-Explorer", "summary": "Jede Ausführung Ende-zu-Ende abspielen: jeder Modell- und Tool-Aufruf, jede RAG-Abfrage, jeder Speichervorgang, jede Freigabe — mit Kostenzuordnung pro Span." },
-          { "name": "Freigabe-Warteschlange", "summary": "Anstehende Tool-Aufrufe und Policy-Overrides landen hier; freigeben, ablehnen oder anpassen mit Begründung und Audit." },
-          { "name": "AgBOM-Viewer", "summary": "Die CycloneDX-erweiterte AgBOM jedes Agenten inspizieren — Modelle, Tools, MCP-Server, Wissensquellen samt Versionen." }
+          {
+            "name": "Fleet inventory",
+            "summary": "Search managed CLI agents and custom SDK agents by owner, kind, runtime, status, MCP server, or model route."
+          },
+          {
+            "name": "Trace explorer",
+            "summary": "Replay executions with subprocess output, tool calls, approval decisions, handoff context, and cost estimates."
+          },
+          {
+            "name": "Approval queue",
+            "summary": "Review blocked or high-risk MCP tool calls and preserve the reason with the execution record."
+          },
+          {
+            "name": "AgBOM viewer",
+            "summary": "Inspect models, tools, MCP servers, policies, prompts, and knowledge sources attached to an agent version."
+          }
         ],
         "includes": [
-          "Inventar-, Trace-, Freigabe-, AgBOM- und Kostenanzeigen",
-          "Live-SSE-Aktualisierungen bei Statusänderungen",
-          "RBAC mit Org-/Team-/Agent-Bereichen",
-          "Policy-Editor mit Diff-Ansicht",
-          "Export nach OpenTelemetry, OCSF, CycloneDX, SPDX",
-          "Dunkles Standard-Theme und vollständige Tastenkürzel"
+          "Inventory, execution, trace, approval, AgBOM, and cost dashboards",
+          "Live updates from the control plane event stream",
+          "Policy editor and enforcement log",
+          "MCP server registry views",
+          "Export paths for OpenTelemetry, OCSF, CycloneDX, and SPDX",
+          "Dark and light themes with keyboard-friendly operations"
         ],
         "cli": [
-          { "prompt": "$ joch console serve --port 8080", "out": "Joch Console lauscht auf http://localhost:8080" },
-          { "prompt": "$ open http://localhost:8080/agents", "out": "12 Agenten · 4 Frameworks · 3 Anbieter" },
-          { "prompt": "$ joch console approvals --pending", "out": "1 offen · email.send → resend · Agent: support-bot" }
+          {
+            "prompt": "$ crux up",
+            "out": "crux server running on http://localhost:7700"
+          },
+          {
+            "prompt": "$ crux agents ls",
+            "out": "claude · codex · gemini · custom/research-bot"
+          },
+          {
+            "prompt": "$ crux trace exec-7d3f",
+            "out": "143 events · 11 tool calls · 1 approval pending"
+          }
         ]
       },
       "registry": {
-        "name": "Joch Registry",
+        "name": "Crux MCP Registry",
         "tag": "Open Source",
-        "tagline": "Eine Registry, aus der Ihre Agenten ziehen.",
-        "summary": "Joch Registry ist die offene Registry für wiederverwendbare Agenten-Vorlagen, Policy-Bündel, Tool-Definitionen und MCP-Server-Beschreibungen. Versioniert, signiert, von jeder Joch-Installation aus abrufbar.",
-        "image": "/brand/joch_registry.png",
+        "tagline": "Know every tool surface your agents can reach.",
+        "summary": "The Crux MCP Registry imports each managed agent's MCP servers, tracks tool schemas and versions, and gives policy a stable target for allowlists, blocks, and approvals.",
+        "image": "/brand/crux_registry.png",
         "features": [
-          { "name": "Vorlagen-Katalog", "summary": "Wiederverwendbare Agenten-Definitionen mit Eingabe-/Ausgabeschemata, Standard-Policies und empfohlenen Modellen veröffentlichen." },
-          { "name": "Policy-Bibliothek", "summary": "Policy-Bündel (Allowlists, Redaction, Budgetgrenzen) als versionierte Artefakte verteilen, die Ihre Flotte einzieht." },
-          { "name": "MCP- & Tool-Deskriptoren", "summary": "Angepinnte, signierte MCP-Server-Einträge mit Capability-Deklarationen und Sicherheitsprüfstatus." },
-          { "name": "Versionierung & Signaturen", "summary": "Semver, content-adressierte Digests, optional Cosign-Signaturen — Ihre Agenten ziehen nur Geprüftes." }
+          {
+            "name": "Server discovery",
+            "summary": "Read native agent MCP configuration and register server URLs, commands, schemas, and owners."
+          },
+          {
+            "name": "Schema diffing",
+            "summary": "Detect when a tool signature changes before agents can use it silently."
+          },
+          {
+            "name": "Version pinning",
+            "summary": "Lock high-risk tools to known-good versions or quarantine them across the fleet."
+          },
+          {
+            "name": "Policy targeting",
+            "summary": "Apply allow, deny, approval, and sandbox rules by server, tool, agent, or team."
+          }
         ],
         "includes": [
-          "Öffentliche und private Repositories",
-          "Mirror-Modus für Airgap-Betrieb",
-          "Pull/Push CLI und HTTP-API",
-          "Webhooks bei Veröffentlichung",
-          "Cross-Registry-Replikation",
-          "Suche nach Capability, Tag oder Verantwortlichem"
+          "MCP server and tool inventory",
+          "Trust score and review metadata",
+          "Version pinning and quarantine state",
+          "Prompt-injection scan status",
+          "Import from Claude Code, Codex, Gemini CLI, and custom configs",
+          "Policy-ready identifiers for every tool"
         ],
         "cli": [
-          { "prompt": "$ joch registry login registry.joch.ai", "out": "Authentifiziert als team-acme" },
-          { "prompt": "$ joch registry push template/customer-research:v0.4.1", "out": "Hochgeladen · Digest sha256:9c2a… · signiert" },
-          { "prompt": "$ joch registry pull policy/pii-redaction:latest", "out": "Aufgelöst zu policy/pii-redaction:v1.7.0 · 12 Regeln" }
+          {
+            "prompt": "$ crux mcp scan",
+            "out": "imported 8 servers · 47 tools · 2 schema changes"
+          },
+          {
+            "prompt": "$ crux mcp ls",
+            "out": "filesystem · github · slack · postgres · browser"
+          },
+          {
+            "prompt": "$ crux mcp block slack.chat.postMessage",
+            "out": "blocked · approval required for existing runs"
+          }
         ]
       },
       "operator": {
-        "name": "Joch Operator",
+        "name": "Crux Operator",
         "tag": "Open Source",
-        "tagline": "Agenten als Kubernetes-Ressourcen.",
-        "summary": "Joch Operator macht das Joch-Ressourcenmodell zu Kubernetes-CRDs. Agenten, Modelle, Modell-Routen, MCP-Server, Policies und Traces neben dem Rest Ihrer Plattform abgleichen — über kubectl, Argo CD oder Flux.",
-        "image": "/brand/joch_operator.png",
+        "tagline": "Agents as reconcilable resources.",
+        "summary": "Crux Operator brings the control-plane resource model into Kubernetes for teams that want GitOps-managed agents, policies, gateways, and traces.",
+        "image": "/brand/crux_operator.png",
         "features": [
-          { "name": "First-Class CRDs", "summary": "Agent, Model, ModelRoute, Tool, MCPServer, Policy, Approval, Trace, AgBOM und der Rest des Katalogs als native Kubernetes-Objekte." },
-          { "name": "Reconciliation-Loops", "summary": "Kontinuierliche Controller halten den Soll-Zustand synchron — neustartfest, GitOps-tauglich, idempotent." },
-          { "name": "Admission-Webhooks", "summary": "Schlechte Policy, Drift oder unvertrauenswürdige MCP-Server beim Apply blockieren, bevor sie das Cluster erreichen." },
-          { "name": "Helm + Kustomize", "summary": "Bereitstellung per Helm-Chart oder Kustomize-Overlay; Versionen und Namespaces pro Team anpinnen." }
+          {
+            "name": "Control-plane CRDs",
+            "summary": "Agent, MCPServer, Policy, Approval, Execution, Trace, AgBOM, ModelRoute, and Fleet resources."
+          },
+          {
+            "name": "Reconciliation loops",
+            "summary": "Keep declared agent and policy state aligned with live runtime state."
+          },
+          {
+            "name": "Admission checks",
+            "summary": "Reject unsafe policy, untrusted MCP servers, or drifted model routes before rollout."
+          },
+          {
+            "name": "GitOps-friendly",
+            "summary": "Use kubectl, Helm, Kustomize, Argo CD, or Flux with the same Crux API model."
+          }
         ],
         "includes": [
-          "Alle Joch-CRDs und -Controller",
-          "Helm-Chart mit sinnvollen Defaults",
-          "Validating- und Mutating-Webhooks",
-          "Status-Bedingungen via kubectl sichtbar",
-          "Multi-Namespace und Multi-Tenant",
-          "Kompatibel mit Argo CD, Flux, Backstage"
+          "CRDs and controllers",
+          "Helm chart",
+          "Validating and mutating webhooks",
+          "Status conditions for fleet health",
+          "Multi-namespace policy scoping",
+          "OpenTelemetry and OCSF export hooks"
         ],
         "cli": [
-          { "prompt": "$ helm install joch-operator joch/operator --namespace joch", "out": "Released joch-operator-v1.4.0 · 7 Controller laufen" },
-          { "prompt": "$ kubectl get agents -A", "out": "12 Agenten · alle Reconciled · letzter Sync vor 4s" },
-          { "prompt": "$ kubectl describe agent support-bot", "out": "Conditions: Ready, Synced · Trace 143 Events · Letzte AgBOM v0.7" }
+          {
+            "prompt": "$ helm install crux-operator crux/operator --namespace crux",
+            "out": "controllers ready · webhooks registered"
+          },
+          {
+            "prompt": "$ kubectl get agents -A",
+            "out": "12 agents · 3 managed · 9 custom · all reconciled"
+          },
+          {
+            "prompt": "$ kubectl describe mcpserver github",
+            "out": "Pinned · trusted · 14 tools · policy prod-tools"
+          }
         ]
       },
       "cloud": {
-        "name": "Joch Cloud",
-        "tag": "Kommerziell",
-        "tagline": "Ihre Laufzeit. Unsere Steuerungsebene.",
-        "summary": "Joch Cloud ist die gehostete Mehrmandanten-Steuerungsebene. Die Steuerungsebene läuft bei uns; Ihre Agenten und Laufzeiten bleiben, wo sie sind. Verbunden über einen Customer-Runtime-Tunnel — kein eingehender Port nötig.",
-        "image": "/brand/joch_cloud.png",
+        "name": "Crux Cloud",
+        "tag": "Commercial",
+        "tagline": "Your agents. Shared control plane.",
+        "summary": "Crux Cloud hosts the organization control plane while your agents continue to run locally, in containers, or in clusters. Fleet enrollment, policy rollout, retention, and approvals become shared operations.",
+        "image": "/brand/crux_cloud.png",
         "features": [
-          { "name": "Gehostete Steuerungsebene", "summary": "Multi-Region, mehrmandantenfähig. SSO, SCIM, RBAC. Audit-Export an Ihr SIEM. Mit SLA." },
-          { "name": "Customer-Runtime-Tunnel", "summary": "Outbound-only WebSocket-Tunnel aus Ihrer Umgebung — keine Inbound-Ports, keine Firewall-Änderungen." },
-          { "name": "Verwaltete Aufbewahrung", "summary": "Trace- und AgBOM-Aufbewahrung bis 90 Tage auf Team, individuell auf Enterprise. Jederzeit exportierbar." },
-          { "name": "Freigabe-Routing", "summary": "Slack- und E-Mail-Freigaben mit Reply-to-Approve, Mention-to-Deny, vollem Audit." }
+          {
+            "name": "Distributed fleet enrollment",
+            "summary": "Connect local Crux servers and workers into an org-wide fleet without exposing inbound ports."
+          },
+          {
+            "name": "Org-wide policy push",
+            "summary": "Roll out MCP allowlists, approval rules, budgets, and model policies across teams."
+          },
+          {
+            "name": "Managed retention",
+            "summary": "Retain traces, AgBOMs, and audit records beyond the local SQLite store."
+          },
+          {
+            "name": "Approval routing",
+            "summary": "Route risky tool calls through Slack, email, or console queues with full audit history."
+          }
         ],
         "includes": [
-          "Alles aus dem Open-Source-Kern",
-          "Gehostete Console mit eigener Domain",
-          "SSO / SCIM / Erweitertes RBAC",
-          "Multi-Region Trace- + AgBOM-Speicher",
-          "Customer-Runtime-Tunnel (kostenlos)",
-          "Audit-Export an SIEM (S3, Splunk, Datadog, Elastic)",
-          "Premium-Konnektoren (Jira, ServiceNow, PagerDuty)",
-          "Geschäftszeit-Support · 99,9 % SLA"
+          "Hosted console and API",
+          "SSO / SCIM / RBAC",
+          "Fleet sync and profile management",
+          "90-day trace and AgBOM retention on Team",
+          "SIEM-compatible audit export",
+          "Slack and email approvals",
+          "Business-hours support and SLA"
         ],
         "cli": [
-          { "prompt": "$ joch login --cloud team-acme", "out": "Eingeloggt als you@team-acme.com · Org acme · Region eu-west-1" },
-          { "prompt": "$ joch tunnel up --runtime prod-cluster", "out": "Tunnel oben · 14ms RTT · Agenten ab jetzt aus der Console erreichbar" },
-          { "prompt": "$ joch trace export --since 24h --sink datadog", "out": "18.432 Events nach Datadog exportiert" }
+          {
+            "prompt": "$ crux login",
+            "out": "authenticated · org acme · region eu-west-1"
+          },
+          {
+            "prompt": "$ crux sync enable",
+            "out": "profile sync enabled · traces streaming"
+          },
+          {
+            "prompt": "$ crux fleet ls",
+            "out": "laptops · ci-runners · prod-cluster · 42 agents"
+          }
         ]
       },
       "enterprise": {
-        "name": "Joch Enterprise",
-        "tag": "Kommerziell",
-        "tagline": "Selbst gehostet, gehärtet, airgap-tauglich.",
-        "summary": "Joch Enterprise ist die selbst-gehostete Distribution für Organisationen, die nicht auf SaaS laufen können — regulierte Branchen, Airgap-Umgebungen, FedRAMP-Kunden. Gleiche Oberflächen wie Joch Cloud, paketiert für Ihre Laufzeit.",
-        "image": "/brand/joch_enterprise.png",
+        "name": "Crux Enterprise",
+        "tag": "Commercial",
+        "tagline": "Dedicated control for regulated fleets.",
+        "summary": "Crux Enterprise packages the commercial operations layer for dedicated, self-hosted, air-gapped, and compliance-sensitive environments.",
+        "image": "/brand/crux_enterprise.png",
         "features": [
-          { "name": "Airgap-Installer", "summary": "Single-Bundle-Installer mit allen Images und Helm-Charts vorpaketiert. Funktioniert hinter Proxy ohne ausgehendes Netzwerk." },
-          { "name": "Gehärtete Images", "summary": "Distroless-Basis, mit Cosign signiert, SBOM veröffentlicht, an CIS-Benchmarks ausgerichtet." },
-          { "name": "FedRAMP-Paket", "summary": "FIPS-validierte Kryptographie, SSP-Dokumentation, Control-Mapping, dedizierter CVE-Kanal." },
-          { "name": "Erweiterte Policy-Pakete", "summary": "PII-Redaction, GDPR, HIPAA, ITAR, FedRAMP-Control-Maps als Policy-Bündel ausgeliefert." }
+          {
+            "name": "Dedicated hosting",
+            "summary": "Run the cloud operations layer in your cloud, on-premises, or air-gapped environment."
+          },
+          {
+            "name": "Hardened delivery",
+            "summary": "Signed images, SBOMs, hardened defaults, vulnerability response, and controlled upgrade paths."
+          },
+          {
+            "name": "Compliance evidence",
+            "summary": "Export audit, policy, trace, approval, and AgBOM evidence for regulated programs."
+          },
+          {
+            "name": "Advanced support",
+            "summary": "Named technical account ownership, support SLAs, and custom integration planning."
+          }
         ],
         "includes": [
-          "Jede Cloud-Funktion, selbst gehostet",
-          "Airgap-Installer + Offline-Registry",
-          "FIPS / FedRAMP / SOC 2 / ISO 27001 Paket",
-          "Gehärtete, signierte Images mit SBOMs",
-          "Dedizierter CVE-Patch-Kanal",
-          "Erweiterte Policy-Pakete (regulierte Branchen)",
-          "24×7-Support mit benanntem TAM",
-          "99,95 % SLA in Ihrer Laufzeit"
+          "Everything in Cloud Team",
+          "Dedicated control plane",
+          "Airgap bundle and private registry support",
+          "Custom retention and data residency",
+          "Compliance evidence packs",
+          "Advanced policy and eval packs",
+          "24x7 support option"
         ],
         "cli": [
-          { "prompt": "$ joch enterprise install --bundle joch-enterprise-1.4.0.tar.zst", "out": "Signatur geprüft · 24 Images werden geladen · Charts bereit" },
-          { "prompt": "$ joch enterprise upgrade --to 1.5.0 --dry-run", "out": "Plan: 0 brechend · 3 Image-Upgrades · 2 Schema-Migrationen" },
-          { "prompt": "$ joch enterprise compliance export --pack fedramp", "out": "412 Control-Evidence-Dateien nach ./compliance/fedramp/ geschrieben" }
+          {
+            "prompt": "$ crux enterprise install --bundle crux-enterprise.tar.zst",
+            "out": "verified signature · images loaded · charts ready"
+          },
+          {
+            "prompt": "$ crux enterprise upgrade --to 1.5.0 --dry-run",
+            "out": "plan: 0 breaking · 3 image upgrades · 2 migrations"
+          },
+          {
+            "prompt": "$ crux compliance export --pack soc2",
+            "out": "wrote evidence bundle to ./compliance/soc2/"
+          }
         ]
       },
       "marketplace": {
-        "name": "Joch Marketplace",
-        "tag": "Kommerziell",
-        "tagline": "MCP-Server und Tools — geprüft.",
-        "summary": "Joch Marketplace ist der kuratierte Katalog von MCP-Servern und Tools, aus dem Ihre Agenten ziehen können. Jeder Eintrag hat eine Sicherheitsprüfung, signierte Artefakte, eine SLA und eine klare Capability-Deklaration.",
-        "image": "/brand/joch_marketplace.png",
+        "name": "Crux MCP Catalog",
+        "tag": "Commercial",
+        "tagline": "Trusted tool entries for governed fleets.",
+        "summary": "The Crux MCP Catalog gives teams reviewed MCP server definitions, policy templates, security metadata, and signed descriptors they can mirror into private registries.",
+        "image": "/brand/crux_marketplace.png",
         "features": [
-          { "name": "Sicherheitsprüfung", "summary": "Jeder Server vor Listung geprüft auf Capability-Umfang, Netzwerkexposition, Lieferkette und bekannte CVEs." },
-          { "name": "Signierte Artefakte", "summary": "Cosign-Signaturen und content-adressierte Digests; Ihr Registry-Mirror zieht nur geprüfte Bytes." },
-          { "name": "Capability-Deklarationen", "summary": "Jeder Eintrag deklariert, welche Tools er bereitstellt, welche Scopes er braucht und welche Seiteneffekte er auslösen kann." },
-          { "name": "SLA-gestützte Listings", "summary": "Marketplace-Partner verpflichten sich auf Verfügbarkeit und Reaktionszeiten — Eskalationspfade sind Teil des Vertrags." }
+          {
+            "name": "Reviewed descriptors",
+            "summary": "Server and tool metadata with capability declarations, security review status, and ownership signals."
+          },
+          {
+            "name": "Policy templates",
+            "summary": "Ready-made allowlists, approval rules, redaction rules, and sandbox recommendations per tool class."
+          },
+          {
+            "name": "Private mirrors",
+            "summary": "Mirror approved entries into a private organization registry for airgap and change-control workflows."
+          },
+          {
+            "name": "Recall signals",
+            "summary": "Notify operators when a tool should be upgraded, pinned, or quarantined."
+          }
         ],
         "includes": [
-          "Kuratierter MCP-Server-Katalog",
-          "Kuratierter Tool-Katalog",
-          "Cosign-signierte Pakete",
-          "Capability- und Scope-Deklarationen",
-          "Sicherheitsprüf-Attestierungen",
-          "Quarantäne- und Recall-Kanal",
-          "Mirror-Modus für Airgap-Pulls",
-          "Hersteller-SLAs und Eskalation"
+          "Curated MCP server entries",
+          "Signed descriptors",
+          "Policy templates",
+          "Private mirror support",
+          "Security review metadata",
+          "Recall and quarantine notices"
         ],
         "cli": [
-          { "prompt": "$ joch marketplace search --tool email", "out": "5 Treffer · resend (geprüft) · sendgrid (geprüft) · postmark (geprüft) · 2 Community" },
-          { "prompt": "$ joch marketplace install resend@v2.4.0 --pin", "out": "Installiert · Digest sha256:1f8b… · signiert von resend.com" },
-          { "prompt": "$ joch marketplace audit --since 30d", "out": "0 in Quarantäne · 1 zurückgerufen (sendgrid v2.3.1, CVE-2026-1820) · 4 kleine Updates" }
+          {
+            "prompt": "$ crux catalog search --tool email",
+            "out": "5 results · resend · sendgrid · postmark · 2 community"
+          },
+          {
+            "prompt": "$ crux catalog mirror resend@v2.4.0 --pin",
+            "out": "mirrored · digest sha256:1f8b... · policy attached"
+          },
+          {
+            "prompt": "$ crux catalog audit --since 30d",
+            "out": "0 quarantined · 1 recalled · 4 minor updates"
+          }
         ]
       }
     }
@@ -509,32 +796,75 @@
   "pricingPage": {
     "hero": {
       "kicker": "Preise",
-      "title": "Open-Core. Ehrliche Preise.",
-      "subtitle": "Der Apache-2.0-Kern reicht für produktive Flotten. Bezahlt wird die Steuerungsebene, niemals die Inferenz."
+      "title": "Open-Core-Preise fuer Betrieb.",
+      "subtitle": "Crux kostenlos selbst hosten. Zahlen Sie fuer gehostete Retention, Org-Kontrollen, Policy-Rollout, Freigaben und Support."
     },
     "principles": {
       "kicker": "Wie wir abrechnen",
       "items": [
-        { "name": "Steuerung statt Inferenz", "summary": "Inferenz-Abrechnung bleibt beim Anbieter. Joch ist ein Hebel auf Betriebs-Effizienz." },
-        { "name": "Agenten und Ausführungen", "summary": "Pro-Sitz unterschätzt Plattformen mit vielen Automatisierungen und wenigen Menschen. Wir messen die Arbeit." },
-        { "name": "Keine Paywalls im OSS", "summary": "Basis-AgBOM, Traces, Hooks, Gateways und Policies bleiben für immer kostenlos im Open-Source-Kern." },
-        { "name": "Aufbewahrung wird gemessen", "summary": "Trace- und AgBOM-Speicher kosten echtes Geld — das berechnen wir transparent, nicht über Feature-Schranken." }
+        {
+          "name": "Pay for control, not inference",
+          "summary": "Provider tokens remain billed by the provider. Crux charges only for operational control-plane services."
+        },
+        {
+          "name": "Meter agents and retention",
+          "summary": "Agent count and trace retention map directly to operational load and storage cost."
+        },
+        {
+          "name": "No OSS paywalls",
+          "summary": "The CLI, local server, worker, MCP gateway, core policy, and self-hosted console stay Apache-2.0."
+        },
+        {
+          "name": "Cloud is operations at scale",
+          "summary": "Commercial value is shared org operations: SSO, RBAC, audit export, retention, support, and fleet sync."
+        }
       ]
     },
     "addOnsLabel": "Add-ons",
     "addOns": [
-      { "name": "Premium MCP-/Tool-Marketplace", "summary": "Geprüfte MCP-Server und Tools mit Signatur und Sicherheitsprüfung.", "price": "pro Server / Monat" },
-      { "name": "Compliance-Paket", "summary": "SOC 2, HIPAA, FedRAMP-Exporte und Control-Mapping.", "price": "jährlich" },
-      { "name": "Custom Guardian Agent", "summary": "Maßgeschneiderte Guardian-Agent-Integration für Ihr Tool-Gateway.", "price": "Engagement" },
-      { "name": "Privater Registry-Mirror", "summary": "Joch Registry-Mirror mit privaten Repositories und Replikation.", "price": "jährlich" }
+      {
+        "name": "Premium MCP Catalog",
+        "summary": "Reviewed MCP server descriptors, policy templates, signing, and recall signals.",
+        "price": "per server / month"
+      },
+      {
+        "name": "Compliance pack",
+        "summary": "SOC 2, HIPAA, FedRAMP, policy, approval, trace, and AgBOM evidence exports.",
+        "price": "annual"
+      },
+      {
+        "name": "Dedicated control plane",
+        "summary": "Single-tenant Crux Cloud deployed in your cloud or dedicated region.",
+        "price": "capacity-based"
+      },
+      {
+        "name": "Private catalog mirror",
+        "summary": "Organization-local MCP catalog mirror with private descriptors and replication.",
+        "price": "annual"
+      }
     ],
-    "faqLabel": "Preise — FAQ",
+    "faqLabel": "Preis-FAQ",
     "faq": [
-      { "q": "Reicht der Open-Source-Tier wirklich für die Produktion?", "a": "Ja — Steuerungsebene, Gateways, AOS-Exporter, CLI, Console, Framework-Adapter, Anbieter-Adapter und der Kubernetes-Operator sind alle in der Apache-2.0-Distribution. Selbst-gehostete produktive Flotten laufen ohne kommerzielle Lizenz." },
-      { "q": "Was zählt als 'Agent' für die Abrechnung?", "a": "Ein Agent ist ein Eintrag im Joch-Inventar — eine benannte, verantwortete, versionierte Definition. Verschiedene Versionen desselben Agenten zählen als einer." },
-      { "q": "Berechnen Sie pro Ausführung?", "a": "Cloud Team enthält ein großzügiges monatliches Ausführungsbudget pro Agent und misst Überschreitungen in Stufen. OSS und Cloud Starter messen Ausführungen gar nicht." },
-      { "q": "Kann ich von Cloud auf Self-hosted wechseln (oder zurück)?", "a": "Ja. Joch ist portabel by design — Agenten-Datensätze, Policies und Traces lassen sich exportieren und sauber re-importieren. Cloud und Enterprise sprechen dieselbe Steuerungsebene." },
-      { "q": "Berechnen Sie für Inferenz?", "a": "Niemals. Anbieter-Tokens werden vom Anbieter abgerechnet. Joch routet den Aufruf und schreibt die Trace; die Bytes fließen direkt." }
+      {
+        "q": "Is the open-source tier enough for production?",
+        "a": "Yes. The Apache-2.0 distribution includes the local CLI, server, worker, MCP gateway, core policy, adapters, and self-hosted console."
+      },
+      {
+        "q": "What counts as an 'agent' for billing?",
+        "a": "An agent is one registered fleet record: one managed CLI agent, one custom SDK agent, or one deployed agent profile."
+      },
+      {
+        "q": "Do you charge per execution?",
+        "a": "Cloud Team includes execution and retention allowances, then meters overage by capacity tier. Self-hosted OSS does not meter executions."
+      },
+      {
+        "q": "Can I move from Cloud to self-hosted?",
+        "a": "Yes. Fleet profiles, policies, traces, and AgBOM records export through the same Crux control-plane model."
+      },
+      {
+        "q": "Do you charge for inference?",
+        "a": "Never. Provider authentication and token billing remain with the provider unless a custom agent explicitly routes through a Crux gateway."
+      }
     ]
   }
 }

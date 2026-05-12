@@ -1,7 +1,7 @@
-# jochai-homepage
+# crux-control-homepage
 
-The marketing homepage for [Joch AI](https://github.com/peasantsai) — the
-vendor-neutral control plane for AI agent fleets.
+The marketing homepage for [Crux Control](https://github.com/agenticfleet/cruxcontrol) —
+the vendor-neutral control plane for AI agent fleets.
 
 Static, single-page Next.js 16 site. Dark / light themes. English + German.
 
@@ -78,4 +78,4 @@ the same in both — used for links, primary CTAs, and focus rings.
 
 ## License
 
-Apache-2.0 (matches the rest of the Joch project).
+Apache-2.0 (matches the rest of the Crux Control project).

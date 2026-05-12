@@ -13,7 +13,8 @@ export function SectionHeader({
   return (
     <div className={`max-w-2xl ${alignment}`}>
       <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
-        // {kicker}
+        {'// '}
+        {kicker}
       </p>
       <h2 className="mt-3 text-3xl font-semibold tracking-tight text-fg sm:text-4xl">
         {title}

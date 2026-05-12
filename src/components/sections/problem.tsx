@@ -12,7 +12,8 @@ export function Problem() {
       <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24">
         <Reveal>
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
-            // {t('kicker')}
+            {'// '}
+            {t('kicker')}
           </p>
         </Reveal>
         <StaggerGroup className="mt-8 grid gap-x-12 gap-y-5 sm:grid-cols-2" step={0.05}>

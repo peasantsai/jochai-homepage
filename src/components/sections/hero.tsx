@@ -1,24 +1,24 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ArrowRight } from 'lucide-react';
-import { Terminal } from '@/components/ui/terminal';
+import { ArrowRight, ShieldCheck, Boxes, Building2, Scale } from 'lucide-react';
 import { GithubIcon } from '@/components/ui/icons';
-import { FleetSceneLoader } from '@/components/fleet-scene-loader';
+import { HexDiagram } from '@/components/ui/hex-diagram';
 import {
   MagneticButton,
   StaggerGroup,
   StaggerItem,
 } from '@/components/ui/motion-primitives';
 
+const TRUST_ICONS = [ShieldCheck, Boxes, Building2, Scale] as const;
+
 export function Hero() {
   const t = useTranslations('hero');
-  const lines = t.raw('terminalLines') as Array<{ prompt: string; out: string }>;
+  const trust = t.raw('trust') as string[];
 
   return (
-    <section className="relative isolate overflow-hidden pt-28 sm:pt-36">
-      {/* Schematic backdrop */}
-      <div className="grid-bg pointer-events-none absolute inset-0 -z-10 opacity-60" />
+    <section className="relative isolate overflow-hidden pt-28 sm:pt-32">
+      <div className="grid-bg pointer-events-none absolute inset-0 -z-10 opacity-50" />
       <div
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
@@ -27,17 +27,12 @@ export function Hero() {
         }}
       />
 
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 pb-20 sm:px-8 sm:pb-28 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 pb-8 sm:px-8 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-12">
         <StaggerGroup delay={0.1} step={0.08}>
           <StaggerItem>
-            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/80 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-muted backdrop-blur">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              {t('eyebrow')}
-            </div>
-          </StaggerItem>
-          <StaggerItem>
-            <h1 className="mt-6 text-balance text-5xl font-semibold leading-[1.05] tracking-tight text-fg sm:text-6xl lg:text-7xl">
-              {t('title')}
+            <h1 className="text-balance text-5xl font-semibold leading-[1.04] tracking-tight text-fg sm:text-6xl lg:text-7xl">
+              {t('titlePrefix')}{' '}
+              <span className="text-accent">{t('titleAccent')}</span>
             </h1>
           </StaggerItem>
           <StaggerItem>
@@ -48,57 +43,81 @@ export function Hero() {
           <StaggerItem>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <MagneticButton
-                href="https://peasantsai.github.io/joch-docs/"
+                href="https://github.com/agenticfleet/cruxcontrol"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex h-11 items-center gap-2 rounded-md bg-accent px-5 text-sm font-medium text-white transition hover:bg-[color:var(--color-accent-hover)]"
+                className="inline-flex h-12 items-center gap-2 rounded-lg bg-accent px-6 text-base font-medium text-white transition hover:bg-[color:var(--color-accent-hover)]"
               >
                 {t('ctaPrimary')}
                 <ArrowRight className="h-4 w-4" />
               </MagneticButton>
               <MagneticButton
-                href="https://github.com/peasantsai"
+                href="https://github.com/agenticfleet/cruxcontrol"
                 target="_blank"
                 rel="noreferrer"
                 strength={4}
-                className="inline-flex h-11 items-center gap-2 rounded-md border border-border bg-surface/80 px-5 text-sm font-medium text-fg backdrop-blur transition hover:border-accent hover:text-accent"
+                className="inline-flex h-12 items-center gap-2 rounded-lg border border-accent/60 bg-transparent px-6 text-base font-medium text-fg transition hover:border-accent hover:bg-accent/10"
               >
                 <GithubIcon className="h-4 w-4" />
                 {t('ctaSecondary')}
               </MagneticButton>
             </div>
           </StaggerItem>
-          <StaggerItem>
-            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-xs uppercase tracking-wider text-muted">
-              <span>Apache-2.0</span>
-              <span className="hidden h-3 w-px bg-border sm:inline-block" />
-              <span>OWASP AOS</span>
-              <span className="hidden h-3 w-px bg-border sm:inline-block" />
-              <span>OpenTelemetry · OCSF</span>
-              <span className="hidden h-3 w-px bg-border sm:inline-block" />
-              <span>CycloneDX · SPDX</span>
-            </div>
-          </StaggerItem>
         </StaggerGroup>
 
-        {/* Right column: 3D fleet backdrop with the terminal sitting on top. */}
-        <StaggerGroup delay={0.55} step={0.1}>
+        <StaggerGroup delay={0.4} step={0.1}>
           <StaggerItem>
-            <div className="relative isolate">
-              {/* Soft accent glow */}
-              <div className="absolute -inset-6 -z-20 rounded-3xl bg-gradient-to-tr from-transparent via-transparent to-accent/15 blur-3xl" />
-              {/* 3D fleet scene — behind terminal, contained to this column */}
-              <div
-                aria-hidden
-                className="absolute -inset-4 -z-10 overflow-hidden rounded-2xl opacity-80 dark:opacity-90"
-              >
-                <FleetSceneLoader count={9} />
+            <div className="relative isolate aspect-[1/0.86] w-full">
+              <RingLabel position="top">{t('ringPolicies')}</RingLabel>
+              <RingLabel position="tr">{t('ringApprovals')}</RingLabel>
+              <RingLabel position="bl">{t('ringGateways')}</RingLabel>
+              <RingLabel position="bottom">{t('ringObservability')}</RingLabel>
+              <div className="absolute inset-0">
+                <HexDiagram />
               </div>
-              <Terminal title={t('terminalTitle')} lines={lines} />
             </div>
           </StaggerItem>
         </StaggerGroup>
       </div>
+
+      <div className="mx-auto max-w-7xl px-5 pb-16 sm:px-8 sm:pb-20">
+        <div className="grid grid-cols-2 gap-y-4 rounded-2xl border border-border bg-surface/70 px-2 py-5 backdrop-blur sm:grid-cols-4 sm:py-6">
+          {trust.map((label, i) => {
+            const Icon = TRUST_ICONS[i] ?? ShieldCheck;
+            return (
+              <div
+                key={label}
+                className="flex items-center justify-center gap-3 px-4 text-base font-medium text-fg"
+              >
+                <Icon className="h-5 w-5 text-fg-soft" aria-hidden="true" />
+                <span>{label}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </section>
+  );
+}
+
+function RingLabel({
+  position,
+  children,
+}: {
+  position: 'top' | 'tr' | 'bl' | 'bottom';
+  children: React.ReactNode;
+}) {
+  const pos: Record<typeof position, string> = {
+    top: 'top-[4%] left-1/2 -translate-x-1/2',
+    tr: 'top-[30%] right-[1%]',
+    bl: 'bottom-[30%] left-[2%]',
+    bottom: 'bottom-[4%] left-1/2 -translate-x-1/2',
+  };
+  return (
+    <span
+      className={`absolute z-10 inline-flex rounded-md border border-border bg-surface/80 px-3 py-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-fg-soft backdrop-blur ${pos[position]}`}
+    >
+      {children}
+    </span>
   );
 }

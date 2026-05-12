@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://joch.ai'),
-  title: 'Joch — The control plane for AI agent fleets',
+  metadataBase: new URL('https://crux.invariantcontinuum.io'),
+  title: 'Crux Control - AI agent control plane',
   description:
-    'Joch is the vendor-neutral control plane for governing, securing, and operating AI agent fleets across every SDK, model, tool, and runtime.',
+    'Crux Control discovers, governs, routes, and observes managed CLI agents and custom-built agents from one vendor-neutral control plane.',
   icons: {
     icon: [
       { url: '/brand/favicon.ico' },

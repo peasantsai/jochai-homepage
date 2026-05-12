@@ -3,7 +3,7 @@ import { YOKE_PATH, YOKE_TRANSFORM } from './brand-mark';
 
 /**
  * Hand-authored SVG product icons. Each icon is a container shape (monitor,
- * cube, hexagon, cloud, shield, cart) with the official Joch yoke embedded
+ * cube, hexagon, cloud, shield, cart) with the Crux yoke embedded
  * inside via a nested <svg> using the verbatim brand path.
  *
  * Per-product accent colors match the brand sample sheet.

@@ -1,7 +1,7 @@
 import type { SVGProps } from 'react';
 
 /**
- * The official Joch yoke logomark — verbatim from the brand asset
+ * The Crux Control yoke logomark — verbatim from the brand asset
  * (500×500 viewBox, PostScript-flipped Y via the `<g>` transform wrapper).
  *
  * Theme-aware via currentColor.

@@ -95,7 +95,7 @@ function ProductBody({ slug }: { slug: Slug }) {
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a
-                  href="https://peasantsai.github.io/joch-docs/"
+                  href="https://github.com/agenticfleet/cruxcontrol"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex h-11 items-center gap-2 rounded-md bg-accent px-5 text-sm font-medium text-white transition hover:bg-[color:var(--color-accent-hover)]"
@@ -103,7 +103,7 @@ function ProductBody({ slug }: { slug: Slug }) {
                   {t('shared.ctaPrimary')} <ArrowRight className="h-4 w-4" />
                 </a>
                 <a
-                  href="https://github.com/peasantsai"
+                  href="https://github.com/agenticfleet/cruxcontrol"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex h-11 items-center gap-2 rounded-md border border-border bg-surface px-5 text-sm font-medium text-fg transition hover:border-accent hover:text-accent"
@@ -130,7 +130,8 @@ function ProductBody({ slug }: { slug: Slug }) {
       <section className="relative bg-surface-2 border-y border-border">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24">
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
-            // {t('shared.featuresLabel')}
+            {'// '}
+            {t('shared.featuresLabel')}
           </p>
           <div className="mt-10 grid gap-px overflow-hidden rounded-xl border border-border bg-border md:grid-cols-2">
             {features.map((f, i) => (
@@ -155,7 +156,8 @@ function ProductBody({ slug }: { slug: Slug }) {
         <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:px-8 sm:py-24 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
-              // {t('shared.includesLabel')}
+              {'// '}
+              {t('shared.includesLabel')}
             </p>
             <ul className="mt-8 space-y-3">
               {includes.map((line) => (
@@ -168,10 +170,11 @@ function ProductBody({ slug }: { slug: Slug }) {
           </div>
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
-              // {t('shared.cliLabel')}
+              {'// '}
+              {t('shared.cliLabel')}
             </p>
             <div className="mt-8">
-              <Terminal title={`joch — ${name.toLowerCase()}`} lines={cli} />
+              <Terminal title={`crux - ${name.toLowerCase()}`} lines={cli} />
             </div>
           </div>
         </div>

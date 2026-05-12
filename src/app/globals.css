@@ -116,3 +116,10 @@ html {
 
 /* Smooth scroll for in-page anchors (fixed nav offset is handled by anchor-offset). */
 html { scroll-behavior: smooth; }
+
+/* Crux hex-diagram circuit animations. */
+@keyframes cruxFlow { to { stroke-dashoffset: -200; } }
+@keyframes cruxCubePulse {
+  0% { transform: scale(0.6); opacity: 0.7; }
+  100% { transform: scale(2.2); opacity: 0; }
+}

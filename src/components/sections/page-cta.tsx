@@ -23,7 +23,7 @@ export function PageCta({ namespace = 'productPages.shared' }: { namespace?: str
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <a
-            href="https://peasantsai.github.io/joch-docs/"
+            href="https://github.com/agenticfleet/cruxcontrol"
             target="_blank"
             rel="noreferrer"
             className="inline-flex h-11 items-center gap-2 rounded-md bg-accent px-5 text-sm font-medium text-white transition hover:bg-[color:var(--color-accent-hover)]"
@@ -31,7 +31,7 @@ export function PageCta({ namespace = 'productPages.shared' }: { namespace?: str
             {t('ctaPrimary')} <ArrowRight className="h-4 w-4" />
           </a>
           <a
-            href="https://github.com/peasantsai"
+            href="https://github.com/agenticfleet/cruxcontrol"
             target="_blank"
             rel="noreferrer"
             className="inline-flex h-11 items-center gap-2 rounded-md border border-[color:var(--color-ink-3)] bg-[color:var(--color-ink-2)] px-5 text-sm font-medium text-paper transition hover:border-accent hover:text-accent"

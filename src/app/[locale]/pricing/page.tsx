@@ -14,7 +14,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'pricingPage.hero' });
-  return { title: `${t('title')} — Joch`, description: t('subtitle') };
+  return { title: `${t('title')} - Crux Control`, description: t('subtitle') };
 }
 
 type Principle = { name: string; summary: string };
@@ -41,7 +41,8 @@ function PricingPageBody() {
         />
         <div className="mx-auto max-w-4xl px-5 pb-12 text-center sm:px-8 sm:pb-16">
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
-            // {t('hero.kicker')}
+            {'// '}
+            {t('hero.kicker')}
           </p>
           <h1 className="mx-auto mt-4 max-w-3xl text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-fg sm:text-5xl lg:text-6xl">
             {t('hero.title')}
@@ -81,7 +82,8 @@ function PricingPageBody() {
       <section className="relative">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24">
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
-            // {t('addOnsLabel')}
+            {'// '}
+            {t('addOnsLabel')}
           </p>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {addOns.map((a) => (
@@ -111,7 +113,8 @@ function PricingPageBody() {
       <section className="relative bg-surface-2 border-y border-border">
         <div className="mx-auto max-w-3xl px-5 py-20 sm:px-8 sm:py-24">
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
-            // {t('faqLabel')}
+            {'// '}
+            {t('faqLabel')}
           </p>
           <div className="mt-10 divide-y divide-border rounded-xl border border-border bg-surface">
             {faq.map((f) => (

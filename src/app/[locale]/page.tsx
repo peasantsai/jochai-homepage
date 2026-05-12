@@ -2,8 +2,11 @@ import { setRequestLocale } from 'next-intl/server';
 import { Nav } from '@/components/nav';
 import { Footer } from '@/components/footer';
 import { Hero } from '@/components/sections/hero';
+import { Stats } from '@/components/sections/stats';
 import { Problem } from '@/components/sections/problem';
+import { Features } from '@/components/sections/features';
 import { Pillars } from '@/components/sections/pillars';
+import { ConsoleSection } from '@/components/sections/console';
 import { Products } from '@/components/sections/products';
 import { Integrations } from '@/components/sections/integrations';
 import { UseCases } from '@/components/sections/use-cases';
@@ -23,8 +26,11 @@ export default async function HomePage({
       <Nav />
       <main>
         <Hero />
+        <Stats />
         <Problem />
+        <Features />
         <Pillars />
+        <ConsoleSection />
         <Products />
         <Integrations />
         <UseCases />
